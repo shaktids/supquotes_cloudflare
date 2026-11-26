@@ -7,6 +7,11 @@
   // The adapter writes dist/server/wrangler.json (assets → dist/client) and `wrangler deploy` uses it.
   "assets": { "binding": "ASSETS" },
   "observability": { "enabled": true },
+  // Custom domains: Cloudflare creates the DNS records and certificates.
+  "routes": [
+    { "pattern": "supquotes.com", "custom_domain": true },
+    { "pattern": "www.supquotes.com", "custom_domain": true }
+  ],
   "vars": {
     // Public base URL of the Internxt media gateway (rclone serve s3 behind a Cloudflare Tunnel).
     // Only needed if templates/festivals use background art. Path-style S3: https://<host>/<bucket>
