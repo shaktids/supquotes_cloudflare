@@ -1,0 +1,3 @@
+# ramadan wishes, one per line. {name} = the person's name.
+Ramadan Mubarak, {name}! May this holy month bring you peace and blessings.
+Wishing you a blessed and peaceful Ramadan, {name}.

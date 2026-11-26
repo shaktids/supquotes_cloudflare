@@ -1,0 +1,3 @@
+# happiness-day wishes, one per line. {name} = the person's name.
+Happy Happiness Day, {name}! You make the world a little brighter just by being you.
+Wishing you a day full of smiles and small joys, {name}. Happy International Day of Happiness!

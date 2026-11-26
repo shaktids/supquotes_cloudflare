@@ -1,0 +1,3 @@
+# holi wishes, one per line. {name} = the person's name.
+Happy Holi, {name}! May your life be as colourful as this festival.
+Wishing you a colourful and joyful Holi, {name}! Bura na mano, Holi hai!

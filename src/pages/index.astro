@@ -1,7 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import Generator from "../components/Generator.astro";
-import { today, templates, topics, occasions, randomWish } from "../lib/db";
+import { today, templates, topics, occasions, randomWish } from "../lib/content";
 
 const t = await today();
 const [tpls, tops, occs] = await Promise.all([templates(), topics(), occasions()]);

@@ -1,0 +1,2 @@
+# onam wishes, one per line. {name} = the person's name.
+Happy Onam, {name}! Wishing you a feast of happiness and prosperity.

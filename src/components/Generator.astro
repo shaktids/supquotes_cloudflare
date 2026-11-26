@@ -1,15 +1,15 @@
 ---
-import type { Quote, Wish, Template, Topic, Occasion } from "../lib/db";
+import type { Quote, Wish, OccasionView, templates as templatesFn, topics as topicsFn } from "../lib/content";
 
 interface Props {
   mode: "quote" | "wish";
   quote: Quote | null;
   wish: Wish | null;
   name?: string;
-  templates: (Template & { bg_url: string | null })[];
-  topics: (Topic & { is_occasion: boolean })[];
-  occasions: Occasion[];
-  templateId?: number | null;
+  templates: ReturnType<typeof templatesFn>;
+  topics: ReturnType<typeof topicsFn>;
+  occasions: OccasionView[];
+  templateId?: string | null;
   festivalOccasion?: string | null;
 }
 const p = Astro.props;

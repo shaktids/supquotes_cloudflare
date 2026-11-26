@@ -1,0 +1,2 @@
+# coffee-day wishes, one per line. {name} = the person's name.
+Happy International Coffee Day, {name}! May your cup be strong and your day be bright.

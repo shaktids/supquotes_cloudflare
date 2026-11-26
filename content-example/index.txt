@@ -1,7 +1,0 @@
-# Files for SupQuotes to import. Generated 2026-11-26T03:17:55.246Z
-quotes/love/rumi.yaml
-quotes/motivation.txt
-quotes/success.csv
-wishes/anniversary.csv
-wishes/birthday.txt
-wishes/diwali/hindi.yaml

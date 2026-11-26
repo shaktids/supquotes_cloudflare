@@ -1,0 +1,2 @@
+# republic-day wishes, one per line. {name} = the person's name.
+Happy Republic Day, {name}! Proud of our nation, proud of our people.

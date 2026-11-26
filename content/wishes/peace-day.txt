@@ -1,0 +1,2 @@
+# peace-day wishes, one per line. {name} = the person's name.
+Wishing you a peaceful heart and a calm mind, {name}. Happy International Day of Peace.

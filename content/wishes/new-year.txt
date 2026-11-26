@@ -1,0 +1,3 @@
+# new-year wishes, one per line. {name} = the person's name.
+Happy New Year, {name}! May the year ahead be full of new beginnings and good news.
+Cheers to a fresh start, {name}. Happy New Year and may all your plans come true!

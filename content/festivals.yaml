@@ -1,0 +1,708 @@
+# Festivals & special days: one entry per occurrence (add next year's dates as new entries).
+# starts/ends: YYYY-MM-DD in site time (inclusive). occasion: links to wishes/<occasion> and quotes/<occasion>.
+# priority: higher wins when dates overlap. art: optional Internxt key for the homepage banner.
+# Lunar-calendar dates (Diwali, Holi, Eid, Navratri, ...) for 2026-27 are estimates: check them before they go live.
+- slug: thanksgiving-2026
+  name: Thanksgiving
+  occasion: thanksgiving
+  starts: 2026-11-25
+  ends: 2026-11-26
+  headline: Happy Thanksgiving! Say thank you with a card
+  accent: "#b45309"
+  priority: 5
+- slug: world-aids-day-2026
+  name: World AIDS Day
+  occasion: world-aids-day
+  starts: 2026-12-01
+  ends: 2026-12-01
+  headline: "World AIDS Day: end the stigma, share the facts"
+  accent: "#dc2626"
+  priority: 2
+- slug: disability-day-2026
+  name: International Day of Persons with Disabilities
+  occasion: disability-day
+  starts: 2026-12-03
+  ends: 2026-12-03
+  headline: A world built for everyone
+  accent: "#2563eb"
+  priority: 2
+- slug: hanukkah-2026
+  name: Hanukkah
+  occasion: hanukkah
+  starts: 2026-12-04
+  ends: 2026-12-12
+  headline: Happy Hanukkah! Share the light
+  accent: "#1d4ed8"
+  priority: 4
+- slug: human-rights-day-2026
+  name: Human Rights Day
+  occasion: human-rights-day
+  starts: 2026-12-10
+  ends: 2026-12-10
+  headline: "Human Rights Day: equal in dignity and rights"
+  accent: "#0369a1"
+  priority: 2
+- slug: christmas-2026
+  name: Christmas
+  occasion: christmas
+  starts: 2026-12-20
+  ends: 2026-12-26
+  headline: Merry Christmas! Make a card for someone you love
+  accent: "#b91c1c"
+  priority: 5
+- slug: new-year-2027
+  name: New Year
+  occasion: new-year
+  starts: 2026-12-30
+  ends: 2027-01-02
+  headline: Happy New Year 2027! Send your wishes
+  accent: "#d4a72c"
+  priority: 10
+- slug: braille-day-2027
+  name: World Braille Day
+  occasion: braille-day
+  starts: 2027-01-04
+  ends: 2027-01-04
+  headline: World Braille Day
+  accent: "#475569"
+  priority: 2
+- slug: sankranti-2027
+  name: Makar Sankranti & Pongal
+  occasion: sankranti
+  starts: 2027-01-13
+  ends: 2027-01-15
+  headline: Happy Sankranti & Pongal!
+  accent: "#f59e0b"
+  priority: 5
+- slug: education-day-2027
+  name: International Day of Education
+  occasion: education-day
+  starts: 2027-01-24
+  ends: 2027-01-24
+  headline: International Day of Education
+  accent: "#1d4ed8"
+  priority: 2
+- slug: republic-day-2027
+  name: Republic Day
+  occasion: republic-day
+  starts: 2027-01-25
+  ends: 2027-01-26
+  headline: Happy Republic Day
+  accent: "#ff9933"
+  priority: 5
+- slug: world-cancer-day-2027
+  name: World Cancer Day
+  occasion: world-cancer-day
+  starts: 2027-02-04
+  ends: 2027-02-04
+  headline: "World Cancer Day: strength to every fighter"
+  accent: "#7c3aed"
+  priority: 2
+- slug: lunar-new-year-2027
+  name: Lunar New Year
+  occasion: lunar-new-year
+  starts: 2027-02-05
+  ends: 2027-02-07
+  headline: Happy Lunar New Year!
+  accent: "#dc2626"
+  priority: 5
+- slug: ramadan-2027
+  name: Ramadan
+  occasion: ramadan
+  starts: 2027-02-07
+  ends: 2027-02-09
+  headline: Ramadan Mubarak
+  accent: "#047857"
+  priority: 4
+- slug: valentines-2027
+  name: Valentine's Day
+  occasion: valentines
+  starts: 2027-02-12
+  ends: 2027-02-14
+  headline: Say it with a card this Valentine's
+  accent: "#e11d48"
+  priority: 5
+- slug: mother-language-day-2027
+  name: International Mother Language Day
+  occasion: mother-language-day
+  starts: 2027-02-21
+  ends: 2027-02-21
+  headline: Happy Mother Language Day! Wish someone in your own language
+  accent: "#0f766e"
+  priority: 2
+- slug: wildlife-day-2027
+  name: World Wildlife Day
+  occasion: wildlife-day
+  starts: 2027-03-03
+  ends: 2027-03-03
+  headline: World Wildlife Day
+  accent: "#15803d"
+  priority: 2
+- slug: womens-day-2027
+  name: International Women's Day
+  occasion: womens-day
+  starts: 2027-03-08
+  ends: 2027-03-08
+  headline: Happy Women's Day! Celebrate her
+  accent: "#7c3aed"
+  priority: 5
+- slug: eid-al-fitr-2027
+  name: Eid al-Fitr
+  occasion: eid
+  starts: 2027-03-09
+  ends: 2027-03-11
+  headline: Eid Mubarak! Send your wishes
+  accent: "#047857"
+  priority: 6
+- slug: pi-day-2027
+  name: Pi Day
+  occasion: pi-day
+  starts: 2027-03-14
+  ends: 2027-03-14
+  headline: Happy Pi Day! 3.14159…
+  accent: "#0891b2"
+  priority: 2
+- slug: happiness-day-2027
+  name: International Day of Happiness
+  occasion: happiness-day
+  starts: 2027-03-20
+  ends: 2027-03-20
+  headline: Happy Happiness Day! Make someone smile
+  accent: "#f59e0b"
+  priority: 2
+- slug: holi-2027
+  name: Holi
+  occasion: holi
+  starts: 2027-03-21
+  ends: 2027-03-22
+  headline: Happy Holi! Add some colour to their day
+  accent: "#db2777"
+  priority: 6
+- slug: poetry-day-2027
+  name: World Poetry Day
+  occasion: poetry-day
+  starts: 2027-03-21
+  ends: 2027-03-21
+  headline: World Poetry Day
+  accent: "#6d28d9"
+  priority: 2
+- slug: water-day-2027
+  name: World Water Day
+  occasion: water-day
+  starts: 2027-03-22
+  ends: 2027-03-22
+  headline: "World Water Day: every drop counts"
+  accent: "#0284c7"
+  priority: 2
+- slug: good-friday-2027
+  name: Good Friday
+  occasion: good-friday
+  starts: 2027-03-26
+  ends: 2027-03-26
+  headline: A quiet thought for Good Friday
+  accent: "#4b5563"
+  priority: 4
+- slug: easter-2027
+  name: Easter
+  occasion: easter
+  starts: 2027-03-27
+  ends: 2027-03-28
+  headline: Happy Easter!
+  accent: "#65a30d"
+  priority: 5
+- slug: autism-day-2027
+  name: World Autism Awareness Day
+  occasion: autism-day
+  starts: 2027-04-02
+  ends: 2027-04-02
+  headline: "World Autism Awareness Day: understanding and acceptance"
+  accent: "#2563eb"
+  priority: 2
+- slug: health-day-2027
+  name: World Health Day
+  occasion: health-day
+  starts: 2027-04-07
+  ends: 2027-04-07
+  headline: "World Health Day: wish someone good health"
+  accent: "#16a34a"
+  priority: 2
+- slug: siblings-day-2027
+  name: Siblings Day
+  occasion: siblings-day
+  starts: 2027-04-10
+  ends: 2027-04-10
+  headline: Happy Siblings Day! Tag your partner in crime
+  accent: "#f97316"
+  priority: 2
+- slug: baisakhi-2027
+  name: Baisakhi
+  occasion: baisakhi
+  starts: 2027-04-13
+  ends: 2027-04-14
+  headline: Happy Baisakhi!
+  accent: "#ca8a04"
+  priority: 5
+- slug: earth-day-2027
+  name: Earth Day
+  occasion: earth-day
+  starts: 2027-04-22
+  ends: 2027-04-22
+  headline: Happy Earth Day 🌍
+  accent: "#15803d"
+  priority: 3
+- slug: book-day-2027
+  name: World Book Day
+  occasion: book-day
+  starts: 2027-04-23
+  ends: 2027-04-23
+  headline: Happy World Book Day! Share a line you love
+  accent: "#92400e"
+  priority: 2
+- slug: dance-day-2027
+  name: International Dance Day
+  occasion: dance-day
+  starts: 2027-04-29
+  ends: 2027-04-29
+  headline: Happy International Dance Day!
+  accent: "#db2777"
+  priority: 2
+- slug: labour-day-2027
+  name: Labour Day
+  occasion: labour-day
+  starts: 2027-05-01
+  ends: 2027-05-01
+  headline: Happy Labour Day
+  accent: "#b91c1c"
+  priority: 3
+- slug: press-freedom-day-2027
+  name: World Press Freedom Day
+  occasion: press-freedom-day
+  starts: 2027-05-03
+  ends: 2027-05-03
+  headline: World Press Freedom Day
+  accent: "#334155"
+  priority: 2
+- slug: mothers-day-2027
+  name: Mother's Day
+  occasion: mothers-day
+  starts: 2027-05-08
+  ends: 2027-05-09
+  headline: Happy Mother's Day! Make Mom a card
+  accent: "#db2777"
+  priority: 6
+- slug: nurses-day-2027
+  name: International Nurses Day
+  occasion: nurses-day
+  starts: 2027-05-12
+  ends: 2027-05-12
+  headline: Happy Nurses Day! Thank a nurse today
+  accent: "#0ea5e9"
+  priority: 2
+- slug: family-day-2027
+  name: International Day of Families
+  occasion: family-day
+  starts: 2027-05-15
+  ends: 2027-05-15
+  headline: Happy Family Day!
+  accent: "#f59e0b"
+  priority: 2
+- slug: eid-al-adha-2027
+  name: Eid al-Adha
+  occasion: eid
+  starts: 2027-05-16
+  ends: 2027-05-17
+  headline: Eid al-Adha Mubarak!
+  accent: "#047857"
+  priority: 6
+- slug: no-tobacco-day-2027
+  name: World No Tobacco Day
+  occasion: no-tobacco-day
+  starts: 2027-05-31
+  ends: 2027-05-31
+  headline: "World No Tobacco Day: choose health"
+  accent: "#64748b"
+  priority: 2
+- slug: parents-day-2027
+  name: Global Day of Parents
+  occasion: parents-day
+  starts: 2027-06-01
+  ends: 2027-06-01
+  headline: Happy Parents Day! Thank them today
+  accent: "#ea580c"
+  priority: 2
+- slug: environment-day-2027
+  name: World Environment Day
+  occasion: environment-day
+  starts: 2027-06-05
+  ends: 2027-06-05
+  headline: World Environment Day
+  accent: "#15803d"
+  priority: 3
+- slug: oceans-day-2027
+  name: World Oceans Day
+  occasion: oceans-day
+  starts: 2027-06-08
+  ends: 2027-06-08
+  headline: World Oceans Day
+  accent: "#0369a1"
+  priority: 2
+- slug: blood-donor-day-2027
+  name: World Blood Donor Day
+  occasion: blood-donor-day
+  starts: 2027-06-14
+  ends: 2027-06-14
+  headline: "World Blood Donor Day: thank you, donors"
+  accent: "#b91c1c"
+  priority: 2
+- slug: fathers-day-2027
+  name: Father's Day
+  occasion: fathers-day
+  starts: 2027-06-19
+  ends: 2027-06-20
+  headline: Happy Father's Day! Make Dad a card
+  accent: "#1d4ed8"
+  priority: 6
+- slug: music-day-2027
+  name: World Music Day
+  occasion: music-day
+  starts: 2027-06-21
+  ends: 2027-06-21
+  headline: Happy World Music Day!
+  accent: "#9333ea"
+  priority: 2
+- slug: yoga-day-2027
+  name: International Yoga Day
+  occasion: yoga-day
+  starts: 2027-06-21
+  ends: 2027-06-21
+  headline: Happy Yoga Day 🧘
+  accent: "#ea580c"
+  priority: 3
+- slug: doctors-day-2027
+  name: Doctors' Day
+  occasion: doctors-day
+  starts: 2027-07-01
+  ends: 2027-07-01
+  headline: Happy Doctors' Day! Thank your doctor
+  accent: "#0284c7"
+  priority: 2
+- slug: fourth-of-july-2027
+  name: Fourth of July
+  occasion: fourth-of-july
+  starts: 2027-07-04
+  ends: 2027-07-04
+  headline: Happy Fourth of July!
+  accent: "#1e3a8a"
+  priority: 3
+- slug: chocolate-day-2027
+  name: World Chocolate Day
+  occasion: chocolate-day
+  starts: 2027-07-07
+  ends: 2027-07-07
+  headline: Happy World Chocolate Day 🍫
+  accent: "#78350f"
+  priority: 2
+- slug: emoji-day-2027
+  name: World Emoji Day
+  occasion: emoji-day
+  starts: 2027-07-17
+  ends: 2027-07-17
+  headline: Happy World Emoji Day 😀
+  accent: "#ca8a04"
+  priority: 2
+- slug: tiger-day-2027
+  name: International Tiger Day
+  occasion: tiger-day
+  starts: 2027-07-29
+  ends: 2027-07-29
+  headline: International Tiger Day
+  accent: "#ea580c"
+  priority: 2
+- slug: friendship-day-2027
+  name: Friendship Day
+  occasion: friendship-day
+  starts: 2027-07-31
+  ends: 2027-08-01
+  headline: Happy Friendship Day! Tag your bestie
+  accent: "#f59e0b"
+  priority: 5
+- slug: youth-day-2027
+  name: International Youth Day
+  occasion: youth-day
+  starts: 2027-08-12
+  ends: 2027-08-12
+  headline: Happy International Youth Day!
+  accent: "#7c3aed"
+  priority: 2
+- slug: independence-day-2027
+  name: Independence Day
+  occasion: independence-day
+  starts: 2027-08-14
+  ends: 2027-08-15
+  headline: Happy Independence Day! Jai Hind
+  accent: "#ff9933"
+  priority: 7
+- slug: raksha-bandhan-2027
+  name: Raksha Bandhan
+  occasion: raksha-bandhan
+  starts: 2027-08-16
+  ends: 2027-08-17
+  headline: Happy Raksha Bandhan!
+  accent: "#e11d48"
+  priority: 6
+- slug: photography-day-2027
+  name: World Photography Day
+  occasion: photography-day
+  starts: 2027-08-19
+  ends: 2027-08-19
+  headline: World Photography Day
+  accent: "#334155"
+  priority: 2
+- slug: janmashtami-2027
+  name: Janmashtami
+  occasion: janmashtami
+  starts: 2027-08-24
+  ends: 2027-08-25
+  headline: Happy Janmashtami!
+  accent: "#0e7490"
+  priority: 5
+- slug: ganesh-chaturthi-2027
+  name: Ganesh Chaturthi
+  occasion: ganesh-chaturthi
+  starts: 2027-09-03
+  ends: 2027-09-04
+  headline: Ganpati Bappa Morya!
+  accent: "#ea580c"
+  priority: 6
+- slug: teachers-day-2027
+  name: Teachers' Day
+  occasion: teachers-day
+  starts: 2027-09-05
+  ends: 2027-09-05
+  headline: Happy Teachers' Day! Thank a teacher
+  accent: "#166534"
+  priority: 6
+- slug: literacy-day-2027
+  name: International Literacy Day
+  occasion: literacy-day
+  starts: 2027-09-08
+  ends: 2027-09-08
+  headline: International Literacy Day
+  accent: "#1d4ed8"
+  priority: 2
+- slug: onam-2027
+  name: Onam
+  occasion: onam
+  starts: 2027-09-11
+  ends: 2027-09-12
+  headline: Happy Onam!
+  accent: "#ca8a04"
+  priority: 5
+- slug: peace-day-2027
+  name: International Day of Peace
+  occasion: peace-day
+  starts: 2027-09-21
+  ends: 2027-09-21
+  headline: International Day of Peace 🕊️
+  accent: "#0ea5e9"
+  priority: 2
+- slug: tourism-day-2027
+  name: World Tourism Day
+  occasion: tourism-day
+  starts: 2027-09-27
+  ends: 2027-09-27
+  headline: Happy World Tourism Day! Where to next?
+  accent: "#0d9488"
+  priority: 2
+- slug: heart-day-2027
+  name: World Heart Day
+  occasion: heart-day
+  starts: 2027-09-29
+  ends: 2027-09-29
+  headline: "World Heart Day: look after your heart"
+  accent: "#e11d48"
+  priority: 2
+- slug: navratri-2027
+  name: Navratri
+  occasion: navratri
+  starts: 2027-09-30
+  ends: 2027-10-08
+  headline: Happy Navratri!
+  accent: "#c026d3"
+  priority: 2
+- slug: coffee-day-2027
+  name: International Coffee Day
+  occasion: coffee-day
+  starts: 2027-10-01
+  ends: 2027-10-01
+  headline: Happy International Coffee Day ☕
+  accent: "#78350f"
+  priority: 2
+- slug: gandhi-jayanti-2027
+  name: Gandhi Jayanti
+  occasion: gandhi-jayanti
+  starts: 2027-10-02
+  ends: 2027-10-02
+  headline: Remembering Bapu on Gandhi Jayanti
+  accent: "#78716c"
+  priority: 6
+- slug: world-teachers-day-2027
+  name: World Teachers' Day
+  occasion: teachers-day
+  starts: 2027-10-05
+  ends: 2027-10-05
+  headline: Happy World Teachers' Day!
+  accent: "#166534"
+  priority: 2
+- slug: dussehra-2027
+  name: Dussehra
+  occasion: dussehra
+  starts: 2027-10-09
+  ends: 2027-10-09
+  headline: Happy Dussehra! Good wins
+  accent: "#c2410c"
+  priority: 6
+- slug: mental-health-day-2027
+  name: World Mental Health Day
+  occasion: mental-health-day
+  starts: 2027-10-10
+  ends: 2027-10-10
+  headline: "World Mental Health Day: it's okay to not be okay"
+  accent: "#0d9488"
+  priority: 2
+- slug: girl-child-day-2027
+  name: International Day of the Girl Child
+  occasion: girl-child-day
+  starts: 2027-10-11
+  ends: 2027-10-11
+  headline: International Day of the Girl Child
+  accent: "#db2777"
+  priority: 2
+- slug: food-day-2027
+  name: World Food Day
+  occasion: food-day
+  starts: 2027-10-16
+  ends: 2027-10-16
+  headline: "World Food Day: no one should go hungry"
+  accent: "#65a30d"
+  priority: 2
+- slug: un-day-2027
+  name: United Nations Day
+  occasion: un-day
+  starts: 2027-10-24
+  ends: 2027-10-24
+  headline: United Nations Day
+  accent: "#0284c7"
+  priority: 2
+- slug: diwali-2027
+  name: Diwali
+  occasion: diwali
+  starts: 2027-10-27
+  ends: 2027-10-30
+  headline: Happy Diwali! Light up their status
+  accent: "#a16207"
+  priority: 9
+- slug: halloween-2027
+  name: Halloween
+  occasion: halloween
+  starts: 2027-10-31
+  ends: 2027-10-31
+  headline: Happy Halloween 🎃
+  accent: "#ea580c"
+  priority: 4
+- slug: guru-nanak-jayanti-2027
+  name: Guru Nanak Jayanti
+  occasion: guru-nanak-jayanti
+  starts: 2027-11-13
+  ends: 2027-11-14
+  headline: Happy Gurpurab!
+  accent: "#d97706"
+  priority: 5
+- slug: kindness-day-2027
+  name: World Kindness Day
+  occasion: kindness-day
+  starts: 2027-11-13
+  ends: 2027-11-13
+  headline: "World Kindness Day: be kind today"
+  accent: "#ec4899"
+  priority: 2
+- slug: childrens-day-2027
+  name: Children's Day
+  occasion: childrens-day
+  starts: 2027-11-14
+  ends: 2027-11-14
+  headline: Happy Children's Day!
+  accent: "#0284c7"
+  priority: 4
+- slug: mens-day-2027
+  name: International Men's Day
+  occasion: mens-day
+  starts: 2027-11-19
+  ends: 2027-11-19
+  headline: Happy International Men's Day!
+  accent: "#1d4ed8"
+  priority: 2
+- slug: universal-childrens-day-2027
+  name: Universal Children's Day
+  occasion: childrens-day
+  starts: 2027-11-20
+  ends: 2027-11-20
+  headline: Happy Universal Children's Day!
+  accent: "#0284c7"
+  priority: 2
+- slug: thanksgiving-2027
+  name: Thanksgiving
+  occasion: thanksgiving
+  starts: 2027-11-24
+  ends: 2027-11-25
+  headline: Happy Thanksgiving! Say thank you with a card
+  accent: "#b45309"
+  priority: 5
+- slug: world-aids-day-2027
+  name: World AIDS Day
+  occasion: world-aids-day
+  starts: 2027-12-01
+  ends: 2027-12-01
+  headline: "World AIDS Day: end the stigma, share the facts"
+  accent: "#dc2626"
+  priority: 2
+- slug: disability-day-2027
+  name: International Day of Persons with Disabilities
+  occasion: disability-day
+  starts: 2027-12-03
+  ends: 2027-12-03
+  headline: A world built for everyone
+  accent: "#2563eb"
+  priority: 2
+- slug: human-rights-day-2027
+  name: Human Rights Day
+  occasion: human-rights-day
+  starts: 2027-12-10
+  ends: 2027-12-10
+  headline: "Human Rights Day: equal in dignity and rights"
+  accent: "#0369a1"
+  priority: 2
+- slug: christmas-2027
+  name: Christmas
+  occasion: christmas
+  starts: 2027-12-20
+  ends: 2027-12-26
+  headline: Merry Christmas! Make a card for someone you love
+  accent: "#b91c1c"
+  priority: 5
+- slug: hanukkah-2027
+  name: Hanukkah
+  occasion: hanukkah
+  starts: 2027-12-24
+  ends: 2028-01-01
+  headline: Happy Hanukkah! Share the light
+  accent: "#1d4ed8"
+  priority: 4
+- slug: new-year-2028
+  name: New Year
+  occasion: new-year
+  starts: 2027-12-30
+  ends: 2028-01-02
+  headline: Happy New Year 2028! Send your wishes
+  accent: "#d4a72c"
+  priority: 10

@@ -1,0 +1,3 @@
+# lunar-new-year wishes, one per line. {name} = the person's name.
+Happy Lunar New Year, {name}! Wishing you luck, health and prosperity in the year ahead.
+May the new lunar year bring you good fortune and great joy, {name}!

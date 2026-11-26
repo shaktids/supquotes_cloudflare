@@ -1,6 +1,6 @@
 ---
 import Base from "../../layouts/Base.astro";
-import { wishesFor, occasionLabel } from "../../lib/db";
+import { wishesFor, occasionLabel } from "../../lib/content";
 const occasion = Astro.params.occasion!;
 const wishes = await wishesFor(occasion);
 if (!wishes.length) return Astro.rewrite("/404");

@@ -1,0 +1,4 @@
+# diwali wishes, one per line. {name} = the person's name.
+Happy Diwali, {name}! May the festival of lights brighten your home and your heart.
+Wishing you and your family a joyful and prosperous Diwali, {name}.
+May the lights of Diwali bring you happiness and success, {name}. Shubh Deepavali!

@@ -1,0 +1,2 @@
+# mother-language-day wishes, one per line. {name} = the person's name.
+Happy International Mother Language Day, {name}! Here's to the words we first learned to love in.

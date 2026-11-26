@@ -1,0 +1,2 @@
+# music-day wishes, one per line. {name} = the person's name.
+Happy World Music Day, {name}! May your day have a great soundtrack.

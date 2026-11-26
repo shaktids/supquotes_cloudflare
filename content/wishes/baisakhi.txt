@@ -1,0 +1,2 @@
+# baisakhi wishes, one per line. {name} = the person's name.
+Happy Baisakhi, {name}! May the harvest season bring you joy and abundance.

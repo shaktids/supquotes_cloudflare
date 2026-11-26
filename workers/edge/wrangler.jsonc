@@ -5,17 +5,11 @@
   "compatibility_date": "2026-11-01",
   "compatibility_flags": ["nodejs_compat"],
   "observability": { "enabled": true },
-  // 18:35 UTC = 00:05 Asia/Kolkata: content sync + daily pick. Change together with SITE_TZ
-  // (and DAILY_CRON in src/index.ts). Every 6 hours: content sync only.
-  "triggers": { "crons": ["35 18 * * *", "0 */6 * * *"] },
+  // Draws link-preview images. Content is bundled from generated/content.json: run
+  // `npm run content` (edge:dev / edge:deploy do it for you) after changing content/.
   "routes": [{ "pattern": "og.supquotes.com", "custom_domain": true }],
   "vars": {
-    "MEDIA_BASE_URL": "https://media.supquotes.com/supquotes",
-    "SITE_TZ": "Asia/Kolkata",
-    // Folder with index.txt, quotes/ and wishes/ (docs/content-format.md). Empty = sync off.
-    "CONTENT_BASE_URL": ""
+    "MEDIA_BASE_URL": "https://media.supquotes.com/supquotes"
   },
   "dev": { "port": 8788 }
-  // Secrets (wrangler secret put -c workers/edge/wrangler.jsonc): TURSO_DATABASE_URL, TURSO_AUTH_TOKEN,
-  // optional CONTENT_TOKEN (Bearer token if the content storage needs one)
 }

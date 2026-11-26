@@ -1,0 +1,4 @@
+# eid wishes, one per line. {name} = the person's name.
+Eid Mubarak, {name}! May your home be filled with joy, peace and sweet things.
+Wishing you and your family a blessed Eid, {name}. Eid Mubarak!
+On this Eid, may all your prayers be answered, {name}. Eid Mubarak!

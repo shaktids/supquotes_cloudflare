@@ -1,7 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import QuoteList from "../../components/QuoteList.astro";
-import { quotesBy, topics } from "../../lib/db";
+import { quotesBy, topics } from "../../lib/content";
 const slug = Astro.params.slug!;
 const topic = (await topics()).find((t) => t.slug === slug);
 if (!topic) return Astro.rewrite("/404");

@@ -1,0 +1,3 @@
+# womens-day wishes, one per line. {name} = the person's name.
+Happy Women's Day, {name}! The world is better and brighter because of you.
+Here's to you, {name}: strong, kind and unstoppable. Happy Women's Day!

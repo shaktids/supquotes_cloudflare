@@ -1,0 +1,2 @@
+# valentines wishes, one per line. {name} = the person's name.
+Happy Valentine's Day, {name}. You make every day feel special.

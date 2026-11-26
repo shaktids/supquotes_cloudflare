@@ -1,0 +1,2 @@
+# emoji-day wishes, one per line. {name} = the person's name.
+Happy World Emoji Day, {name}! 😀🎉❤️ You get all the best emojis today.

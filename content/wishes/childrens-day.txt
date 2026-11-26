@@ -1,0 +1,2 @@
+# childrens-day wishes, one per line. {name} = the person's name.
+Happy Children's Day, {name}! Never stop being curious and kind.

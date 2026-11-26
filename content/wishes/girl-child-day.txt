@@ -1,0 +1,2 @@
+# girl-child-day wishes, one per line. {name} = the person's name.
+Happy International Day of the Girl Child, {name}! Dream fearlessly, the world is yours.

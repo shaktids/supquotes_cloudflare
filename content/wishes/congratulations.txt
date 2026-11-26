@@ -1,0 +1,2 @@
+# congratulations wishes, one per line. {name} = the person's name.
+Congratulations, {name}! Your hard work truly paid off. So proud of you.

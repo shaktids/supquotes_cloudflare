@@ -1,0 +1,337 @@
+# Card styles. kind: quote | wish | any. occasion: only offered for that occasion (omit = everyday style).
+# bg: optional Internxt object key for a background image. layout: see shared/layout.ts.
+- name: "Midnight"
+  kind: any
+  sort: 1
+  layout: {"bg":{"type":"gradient","colors":["#1f1c2c","#928dab"],"angle":135},"quoteMark":"rgba(255,255,255,0.18)","text":{"font":"Playfair Display","weight":700,"color":"#ffffff","size":0.062},"author":{"font":"Poppins","weight":500,"color":"rgba(255,255,255,0.85)","size":0.032},"brandColor":"rgba(255,255,255,0.7)"}
+
+- name: "Sunrise"
+  kind: any
+  sort: 2
+  layout: {"bg":{"type":"gradient","colors":["#ff9a56","#ff6a88","#ff99ac"],"angle":160},"quoteMark":"rgba(255,255,255,0.25)","text":{"font":"Poppins","weight":700,"color":"#ffffff","size":0.058,"shadow":"rgba(0,0,0,0.18)"},"author":{"font":"Poppins","weight":500,"color":"#fff3ee","size":0.032},"brandColor":"rgba(255,255,255,0.8)"}
+
+- name: "Paper"
+  kind: quote
+  sort: 3
+  layout: {"bg":{"type":"solid","color":"#f6f1e7"},"align":"left","quoteMark":"#d9b26a","text":{"font":"Lora","weight":600,"italic":true,"color":"#2b2520","size":0.06},"author":{"font":"Montserrat","weight":600,"color":"#8a6d3b","size":0.03},"brandColor":"#8a6d3b"}
+
+- name: "Ocean"
+  kind: any
+  sort: 4
+  layout: {"bg":{"type":"gradient","colors":["#0f2027","#203a43","#2c5364"],"angle":180},"quoteMark":"rgba(120,220,255,0.25)","text":{"font":"Montserrat","weight":700,"color":"#e8f9ff","size":0.056},"author":{"font":"Montserrat","weight":500,"color":"#7fd6f5","size":0.03},"brandColor":"rgba(232,249,255,0.7)"}
+
+- name: "Blush"
+  kind: wish
+  sort: 5
+  layout: {"bg":{"type":"gradient","colors":["#fbd3e9","#bb377d"],"angle":145},"quoteMark":null,"text":{"font":"Dancing Script","weight":700,"color":"#ffffff","size":0.075,"shadow":"rgba(80,0,40,0.3)"},"author":{"font":"Poppins","weight":500,"color":"#fff","size":0.03},"brandColor":"rgba(255,255,255,0.85)"}
+
+- name: "Forest"
+  kind: quote
+  sort: 6
+  layout: {"bg":{"type":"gradient","colors":["#134e5e","#71b280"],"angle":125},"quoteMark":"rgba(255,255,255,0.2)","text":{"font":"Lora","weight":700,"color":"#ffffff","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#e0ffe8","size":0.031},"brandColor":"rgba(255,255,255,0.75)"}
+
+- name: "Christmas Night"
+  kind: wish
+  occasion: christmas
+  sort: 10
+  layout: {"bg":{"type":"gradient","colors":["#0b3d2e","#14532d","#7f1d1d"],"angle":160},"quoteMark":null,"text":{"font":"Dancing Script","weight":700,"color":"#fff7e6","size":0.074},"author":{"font":"Poppins","weight":500,"color":"#fcd34d","size":0.03},"brandColor":"#fcd34d"}
+
+- name: "New Year Gold"
+  kind: wish
+  occasion: new-year
+  sort: 11
+  layout: {"bg":{"type":"gradient","colors":["#0f0c29","#302b63","#24243e"],"angle":150},"quoteMark":null,"text":{"font":"Playfair Display","weight":700,"color":"#f5d27a","size":0.064},"author":{"font":"Poppins","weight":500,"color":"#ffffff","size":0.03},"brandColor":"#f5d27a"}
+
+- name: "Tiranga"
+  kind: wish
+  occasion: republic-day
+  sort: 12
+  layout: {"bg":{"type":"gradient","colors":["#ff9933","#ffffff","#138808"],"angle":180},"quoteMark":null,"text":{"font":"Poppins","weight":700,"color":"#0b2a6f","size":0.058},"author":{"font":"Poppins","weight":500,"color":"#0b2a6f","size":0.03},"brandColor":"#0b2a6f"}
+
+- name: "Harvest"
+  kind: any
+  occasion: thanksgiving
+  sort: 20
+  layout: {"bg":{"type":"gradient","colors":["#7c2d12","#c2410c","#f59e0b"],"angle":150},"quoteMark":"rgba(255,237,213,0.3)","text":{"font":"Lora","weight":700,"color":"#fff7ed","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#fed7aa","size":0.031},"brandColor":"#fed7aa"}
+
+- name: "Menorah Blue"
+  kind: any
+  occasion: hanukkah
+  sort: 21
+  layout: {"bg":{"type":"gradient","colors":["#0c1e5b","#1d4ed8"],"angle":160},"quoteMark":"rgba(250,204,21,0.35)","text":{"font":"Playfair Display","weight":700,"color":"#fef9c3","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#facc15","size":0.031},"brandColor":"#facc15"}
+
+- name: "Kite Sky"
+  kind: any
+  occasion: sankranti
+  sort: 22
+  layout: {"bg":{"type":"gradient","colors":["#38bdf8","#fde68a"],"angle":180},"quoteMark":"rgba(255,255,255,0.4)","text":{"font":"Poppins","weight":700,"color":"#0c4a6e","size":0.056},"author":{"font":"Poppins","weight":500,"color":"#075985","size":0.03},"brandColor":"#075985"}
+
+- name: "Red Lantern"
+  kind: any
+  occasion: lunar-new-year
+  sort: 23
+  layout: {"bg":{"type":"gradient","colors":["#7f1d1d","#dc2626"],"angle":160},"quoteMark":"rgba(252,211,77,0.35)","text":{"font":"Playfair Display","weight":700,"color":"#fde68a","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#fcd34d","size":0.031},"brandColor":"#fcd34d"}
+
+- name: "Crescent"
+  kind: any
+  occasion: ramadan
+  sort: 24
+  layout: {"bg":{"type":"gradient","colors":["#022c22","#065f46"],"angle":170},"quoteMark":"rgba(253,230,138,0.3)","text":{"font":"Playfair Display","weight":700,"color":"#fef3c7","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#fcd34d","size":0.031},"brandColor":"#fcd34d"}
+
+- name: "Eid Gold"
+  kind: any
+  occasion: eid
+  sort: 25
+  layout: {"bg":{"type":"gradient","colors":["#064e3b","#047857","#a16207"],"angle":150},"quoteMark":"rgba(253,230,138,0.3)","text":{"font":"Dancing Script","weight":700,"color":"#fef3c7","size":0.072},"author":{"font":"Poppins","weight":500,"color":"#fde68a","size":0.031},"brandColor":"#fde68a"}
+
+- name: "Violet"
+  kind: any
+  occasion: womens-day
+  sort: 26
+  layout: {"bg":{"type":"gradient","colors":["#4c1d95","#a855f7","#f0abfc"],"angle":140},"quoteMark":"rgba(255,255,255,0.25)","text":{"font":"Playfair Display","weight":700,"color":"#ffffff","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#f5d0fe","size":0.031},"brandColor":"#f5d0fe"}
+
+- name: "Gulal"
+  kind: any
+  occasion: holi
+  sort: 27
+  layout: {"bg":{"type":"gradient","colors":["#ec4899","#f59e0b","#22c55e","#3b82f6"],"angle":135},"quoteMark":"rgba(255,255,255,0.3)","text":{"font":"Poppins","weight":700,"color":"#ffffff","size":0.058,"shadow":"rgba(0,0,0,0.3)"},"author":{"font":"Poppins","weight":500,"color":"#ffffff","size":0.031},"brandColor":"#ffffff"}
+
+- name: "Stillness"
+  kind: any
+  occasion: good-friday
+  sort: 28
+  layout: {"bg":{"type":"gradient","colors":["#1f2937","#4b5563"],"angle":180},"quoteMark":"rgba(255,255,255,0.15)","text":{"font":"Lora","weight":600,"color":"#f3f4f6","size":0.058},"author":{"font":"Poppins","weight":500,"color":"#d1d5db","size":0.03},"brandColor":"#d1d5db"}
+
+- name: "Spring Pastel"
+  kind: any
+  occasion: easter
+  sort: 29
+  layout: {"bg":{"type":"gradient","colors":["#fef9c3","#fbcfe8","#bfdbfe"],"angle":150},"quoteMark":"rgba(101,163,13,0.35)","text":{"font":"Dancing Script","weight":700,"color":"#3f6212","size":0.072},"author":{"font":"Poppins","weight":500,"color":"#4d7c0f","size":0.03},"brandColor":"#4d7c0f"}
+
+- name: "Wheat Gold"
+  kind: any
+  occasion: baisakhi
+  sort: 30
+  layout: {"bg":{"type":"gradient","colors":["#a16207","#facc15"],"angle":160},"quoteMark":"rgba(255,255,255,0.3)","text":{"font":"Poppins","weight":700,"color":"#ffffff","size":0.058,"shadow":"rgba(0,0,0,0.25)"},"author":{"font":"Poppins","weight":500,"color":"#fef9c3","size":0.031},"brandColor":"#fef9c3"}
+
+- name: "Blue Planet"
+  kind: any
+  occasion: earth-day
+  sort: 31
+  layout: {"bg":{"type":"gradient","colors":["#0c4a6e","#15803d"],"angle":150},"quoteMark":"rgba(187,247,208,0.3)","text":{"font":"Lora","weight":700,"color":"#f0fdf4","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#bbf7d0","size":0.031},"brandColor":"#bbf7d0"}
+
+- name: "Workshop"
+  kind: any
+  occasion: labour-day
+  sort: 32
+  layout: {"bg":{"type":"gradient","colors":["#450a0a","#b91c1c"],"angle":160},"quoteMark":"rgba(255,255,255,0.2)","text":{"font":"Montserrat","weight":700,"color":"#fff1f2","size":0.056},"author":{"font":"Montserrat","weight":500,"color":"#fecdd3","size":0.03},"brandColor":"#fecdd3"}
+
+- name: "Rose Petal"
+  kind: any
+  occasion: mothers-day
+  sort: 33
+  layout: {"bg":{"type":"gradient","colors":["#fce7f3","#f9a8d4","#db2777"],"angle":160},"quoteMark":"rgba(255,255,255,0.4)","text":{"font":"Dancing Script","weight":700,"color":"#ffffff","size":0.074,"shadow":"rgba(131,24,67,0.35)"},"author":{"font":"Poppins","weight":500,"color":"#ffffff","size":0.031},"brandColor":"#ffffff"}
+
+- name: "Leaf Green"
+  kind: any
+  occasion: environment-day
+  sort: 34
+  layout: {"bg":{"type":"gradient","colors":["#14532d","#4ade80"],"angle":150},"quoteMark":"rgba(255,255,255,0.25)","text":{"font":"Lora","weight":700,"color":"#ffffff","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#dcfce7","size":0.031},"brandColor":"#dcfce7"}
+
+- name: "Navy Tie"
+  kind: any
+  occasion: fathers-day
+  sort: 35
+  layout: {"bg":{"type":"gradient","colors":["#0f172a","#1d4ed8"],"angle":150},"quoteMark":"rgba(147,197,253,0.3)","text":{"font":"Montserrat","weight":700,"color":"#eff6ff","size":0.056},"author":{"font":"Montserrat","weight":500,"color":"#93c5fd","size":0.03},"brandColor":"#93c5fd"}
+
+- name: "Sunrise Calm"
+  kind: any
+  occasion: yoga-day
+  sort: 36
+  layout: {"bg":{"type":"gradient","colors":["#fed7aa","#fb923c","#c2410c"],"angle":180},"quoteMark":"rgba(255,255,255,0.3)","text":{"font":"Lora","weight":600,"color":"#ffffff","size":0.058,"shadow":"rgba(0,0,0,0.2)"},"author":{"font":"Poppins","weight":500,"color":"#fff7ed","size":0.031},"brandColor":"#fff7ed"}
+
+- name: "Stars & Stripes"
+  kind: any
+  occasion: fourth-of-july
+  sort: 37
+  layout: {"bg":{"type":"gradient","colors":["#1e3a8a","#1e3a8a","#b91c1c"],"angle":180},"quoteMark":"rgba(255,255,255,0.25)","text":{"font":"Montserrat","weight":700,"color":"#ffffff","size":0.056},"author":{"font":"Montserrat","weight":500,"color":"#fecaca","size":0.03},"brandColor":"#ffffff"}
+
+- name: "Sunny Pal"
+  kind: any
+  occasion: friendship-day
+  sort: 38
+  layout: {"bg":{"type":"gradient","colors":["#fde047","#fb923c"],"angle":140},"quoteMark":"rgba(255,255,255,0.4)","text":{"font":"Poppins","weight":700,"color":"#7c2d12","size":0.058},"author":{"font":"Poppins","weight":500,"color":"#9a3412","size":0.031},"brandColor":"#9a3412"}
+
+- name: "Tiranga Wave"
+  kind: any
+  occasion: independence-day
+  sort: 39
+  layout: {"bg":{"type":"gradient","colors":["#ff9933","#ffffff","#138808"],"angle":180},"quoteMark":"rgba(11,42,111,0.25)","text":{"font":"Poppins","weight":700,"color":"#0b2a6f","size":0.056},"author":{"font":"Poppins","weight":500,"color":"#0b2a6f","size":0.03},"brandColor":"#0b2a6f"}
+
+- name: "Rakhi Thread"
+  kind: any
+  occasion: raksha-bandhan
+  sort: 40
+  layout: {"bg":{"type":"gradient","colors":["#9f1239","#f43f5e","#fb923c"],"angle":150},"quoteMark":"rgba(255,255,255,0.3)","text":{"font":"Dancing Script","weight":700,"color":"#fff1f2","size":0.072},"author":{"font":"Poppins","weight":500,"color":"#ffe4e6","size":0.031},"brandColor":"#ffe4e6"}
+
+- name: "Peacock"
+  kind: any
+  occasion: janmashtami
+  sort: 41
+  layout: {"bg":{"type":"gradient","colors":["#083344","#0e7490","#65a30d"],"angle":150},"quoteMark":"rgba(253,224,71,0.3)","text":{"font":"Playfair Display","weight":700,"color":"#fefce8","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#fde047","size":0.031},"brandColor":"#fde047"}
+
+- name: "Modak"
+  kind: any
+  occasion: ganesh-chaturthi
+  sort: 42
+  layout: {"bg":{"type":"gradient","colors":["#9a3412","#ea580c","#facc15"],"angle":160},"quoteMark":"rgba(255,255,255,0.3)","text":{"font":"Poppins","weight":700,"color":"#ffffff","size":0.058,"shadow":"rgba(0,0,0,0.25)"},"author":{"font":"Poppins","weight":500,"color":"#fef3c7","size":0.031},"brandColor":"#fef3c7"}
+
+- name: "Chalkboard"
+  kind: any
+  occasion: teachers-day
+  sort: 43
+  layout: {"bg":{"type":"solid","color":"#1f3d2b"},"quoteMark":"rgba(255,255,255,0.2)","text":{"font":"Lora","weight":600,"color":"#f8fafc","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#bbf7d0","size":0.031},"brandColor":"#bbf7d0"}
+
+- name: "Pookalam"
+  kind: any
+  occasion: onam
+  sort: 44
+  layout: {"bg":{"type":"gradient","colors":["#facc15","#f97316","#15803d"],"angle":150},"quoteMark":"rgba(255,255,255,0.3)","text":{"font":"Poppins","weight":700,"color":"#ffffff","size":0.058,"shadow":"rgba(0,0,0,0.3)"},"author":{"font":"Poppins","weight":500,"color":"#ffffff","size":0.031},"brandColor":"#ffffff"}
+
+- name: "Garba Night"
+  kind: any
+  occasion: navratri
+  sort: 45
+  layout: {"bg":{"type":"gradient","colors":["#701a75","#c026d3","#f97316"],"angle":145},"quoteMark":"rgba(255,255,255,0.3)","text":{"font":"Playfair Display","weight":700,"color":"#ffffff","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#fae8ff","size":0.031},"brandColor":"#fae8ff"}
+
+- name: "Khadi"
+  kind: any
+  occasion: gandhi-jayanti
+  sort: 46
+  layout: {"bg":{"type":"solid","color":"#f5f0e6"},"align":"left","quoteMark":"#a8a29e","text":{"font":"Lora","weight":600,"color":"#292524","size":0.058},"author":{"font":"Montserrat","weight":600,"color":"#57534e","size":0.03},"brandColor":"#57534e"}
+
+- name: "Vijaya"
+  kind: any
+  occasion: dussehra
+  sort: 47
+  layout: {"bg":{"type":"gradient","colors":["#7c2d12","#c2410c","#fbbf24"],"angle":160},"quoteMark":"rgba(255,255,255,0.3)","text":{"font":"Playfair Display","weight":700,"color":"#fffbeb","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#fde68a","size":0.031},"brandColor":"#fde68a"}
+
+- name: "Diya Night"
+  kind: any
+  occasion: diwali
+  sort: 48
+  layout: {"bg":{"type":"gradient","colors":["#1e1b4b","#581c87","#a16207"],"angle":165},"quoteMark":"rgba(253,224,71,0.35)","text":{"font":"Playfair Display","weight":700,"color":"#fde68a","size":0.062},"author":{"font":"Poppins","weight":500,"color":"#fef3c7","size":0.031},"brandColor":"#fde68a"}
+
+- name: "Pumpkin"
+  kind: any
+  occasion: halloween
+  sort: 49
+  layout: {"bg":{"type":"gradient","colors":["#0a0a0a","#431407","#ea580c"],"angle":180},"quoteMark":"rgba(251,146,60,0.35)","text":{"font":"Montserrat","weight":700,"color":"#fdba74","size":0.058},"author":{"font":"Montserrat","weight":500,"color":"#fed7aa","size":0.03},"brandColor":"#fdba74"}
+
+- name: "Crayon"
+  kind: any
+  occasion: childrens-day
+  sort: 50
+  layout: {"bg":{"type":"gradient","colors":["#38bdf8","#a78bfa","#f472b6"],"angle":135},"quoteMark":"rgba(255,255,255,0.35)","text":{"font":"Poppins","weight":700,"color":"#ffffff","size":0.058,"shadow":"rgba(0,0,0,0.2)"},"author":{"font":"Poppins","weight":500,"color":"#ffffff","size":0.031},"brandColor":"#ffffff"}
+
+- name: "Kesri"
+  kind: any
+  occasion: guru-nanak-jayanti
+  sort: 51
+  layout: {"bg":{"type":"gradient","colors":["#1e3a8a","#d97706"],"angle":160},"quoteMark":"rgba(255,255,255,0.25)","text":{"font":"Playfair Display","weight":700,"color":"#fffbeb","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#fde68a","size":0.031},"brandColor":"#fde68a"}
+
+- name: "Holi Splash"
+  kind: wish
+  occasion: holi
+  sort: 52
+  layout: {"bg":{"type":"gradient","colors":["#a21caf","#f43f5e","#facc15"],"angle":120},"quoteMark":null,"text":{"font":"Dancing Script","weight":700,"color":"#ffffff","size":0.074,"shadow":"rgba(0,0,0,0.3)"},"author":{"font":"Poppins","weight":500,"color":"#ffffff","size":0.031},"brandColor":"#ffffff"}
+
+- name: "Love Letter"
+  kind: any
+  occasion: valentines
+  sort: 53
+  layout: {"bg":{"type":"gradient","colors":["#4c0519","#be123c","#fb7185"],"angle":150},"quoteMark":"rgba(255,255,255,0.3)","text":{"font":"Dancing Script","weight":700,"color":"#fff1f2","size":0.074},"author":{"font":"Poppins","weight":500,"color":"#ffe4e6","size":0.031},"brandColor":"#ffe4e6"}
+
+- name: "Red Ribbon"
+  kind: quote
+  occasion: world-aids-day
+  sort: 60
+  layout: {"bg":{"type":"solid","color":"#fafafa"},"quoteMark":"#dc2626","text":{"font":"Lora","weight":700,"color":"#1f2937","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#dc2626","size":0.031},"brandColor":"#dc2626"}
+
+- name: "Lavender Hope"
+  kind: quote
+  occasion: world-cancer-day
+  sort: 61
+  layout: {"bg":{"type":"gradient","colors":["#ede9fe","#c4b5fd"],"angle":160},"quoteMark":"rgba(91,33,182,0.3)","text":{"font":"Lora","weight":700,"color":"#3b0764","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#5b21b6","size":0.031},"brandColor":"#5b21b6"}
+
+- name: "Calm Teal"
+  kind: quote
+  occasion: mental-health-day
+  sort: 62
+  layout: {"bg":{"type":"gradient","colors":["#ccfbf1","#5eead4"],"angle":170},"quoteMark":"rgba(17,94,89,0.3)","text":{"font":"Lora","weight":600,"color":"#134e4a","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#115e59","size":0.031},"brandColor":"#115e59"}
+
+- name: "Sunny Smile"
+  kind: any
+  occasion: happiness-day
+  sort: 63
+  layout: {"bg":{"type":"gradient","colors":["#fef08a","#fbbf24"],"angle":150},"quoteMark":"rgba(255,255,255,0.5)","text":{"font":"Poppins","weight":700,"color":"#78350f","size":0.058},"author":{"font":"Poppins","weight":500,"color":"#92400e","size":0.031},"brandColor":"#92400e"}
+
+- name: "Old Library"
+  kind: any
+  occasion: book-day
+  sort: 64
+  layout: {"bg":{"type":"gradient","colors":["#451a03","#92400e"],"angle":160},"quoteMark":"rgba(254,243,199,0.3)","text":{"font":"Lora","weight":700,"italic":true,"color":"#fef3c7","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#fde68a","size":0.031},"brandColor":"#fde68a"}
+
+- name: "Vinyl"
+  kind: any
+  occasion: music-day
+  sort: 65
+  layout: {"bg":{"type":"gradient","colors":["#0f0f0f","#581c87","#db2777"],"angle":145},"quoteMark":"rgba(255,255,255,0.2)","text":{"font":"Montserrat","weight":700,"color":"#ffffff","size":0.058},"author":{"font":"Montserrat","weight":500,"color":"#f5d0fe","size":0.03},"brandColor":"#f5d0fe"}
+
+- name: "Espresso"
+  kind: any
+  occasion: coffee-day
+  sort: 66
+  layout: {"bg":{"type":"gradient","colors":["#1c0f08","#78350f","#d6a76c"],"angle":170},"quoteMark":"rgba(254,243,199,0.3)","text":{"font":"Playfair Display","weight":700,"color":"#fef3c7","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#fde68a","size":0.031},"brandColor":"#fde68a"}
+
+- name: "Dove Sky"
+  kind: any
+  occasion: peace-day
+  sort: 67
+  layout: {"bg":{"type":"gradient","colors":["#e0f2fe","#7dd3fc"],"angle":180},"quoteMark":"rgba(3,105,161,0.25)","text":{"font":"Lora","weight":700,"color":"#0c4a6e","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#075985","size":0.031},"brandColor":"#075985"}
+
+- name: "Deep Blue"
+  kind: any
+  occasion: oceans-day
+  sort: 68
+  layout: {"bg":{"type":"gradient","colors":["#082f49","#0369a1","#22d3ee"],"angle":180},"quoteMark":"rgba(255,255,255,0.2)","text":{"font":"Lora","weight":700,"color":"#ecfeff","size":0.06},"author":{"font":"Poppins","weight":500,"color":"#a5f3fc","size":0.031},"brandColor":"#a5f3fc"}
+
+- name: "Kind Pink"
+  kind: any
+  occasion: kindness-day
+  sort: 69
+  layout: {"bg":{"type":"gradient","colors":["#fdf2f8","#f9a8d4"],"angle":160},"quoteMark":"rgba(157,23,77,0.25)","text":{"font":"Dancing Script","weight":700,"color":"#831843","size":0.072},"author":{"font":"Poppins","weight":500,"color":"#9d174d","size":0.031},"brandColor":"#9d174d"}
+
+- name: "Scrubs"
+  kind: any
+  occasion: nurses-day
+  sort: 70
+  layout: {"bg":{"type":"gradient","colors":["#0c4a6e","#0ea5e9"],"angle":160},"quoteMark":"rgba(255,255,255,0.25)","text":{"font":"Poppins","weight":700,"color":"#ffffff","size":0.056},"author":{"font":"Poppins","weight":500,"color":"#e0f2fe","size":0.031},"brandColor":"#e0f2fe"}
+
+- name: "Stethoscope"
+  kind: any
+  occasion: doctors-day
+  sort: 71
+  layout: {"bg":{"type":"gradient","colors":["#f0f9ff","#bae6fd"],"angle":160},"quoteMark":"rgba(2,132,199,0.3)","text":{"font":"Poppins","weight":700,"color":"#0c4a6e","size":0.056},"author":{"font":"Poppins","weight":500,"color":"#0369a1","size":0.031},"brandColor":"#0369a1"}
+
+- name: "Emoji Pop"
+  kind: any
+  occasion: emoji-day
+  sort: 72
+  layout: {"bg":{"type":"gradient","colors":["#fde047","#fb923c"],"angle":135},"quoteMark":null,"text":{"font":"Poppins","weight":700,"color":"#422006","size":0.058},"author":{"font":"Poppins","weight":500,"color":"#713f12","size":0.031},"brandColor":"#713f12"}
+
+- name: "Cocoa"
+  kind: any
+  occasion: chocolate-day
+  sort: 73
+  layout: {"bg":{"type":"gradient","colors":["#3b1d0f","#7c3f1d"],"angle":160},"quoteMark":"rgba(253,230,138,0.3)","text":{"font":"Dancing Script","weight":700,"color":"#fde68a","size":0.072},"author":{"font":"Poppins","weight":500,"color":"#fcd34d","size":0.031},"brandColor":"#fcd34d"}

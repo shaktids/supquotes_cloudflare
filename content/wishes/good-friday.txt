@@ -1,0 +1,2 @@
+# good-friday wishes, one per line. {name} = the person's name.
+Happy Good Friday, {name}. Wishing you peace, reflection and hope.

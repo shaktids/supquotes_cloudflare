@@ -1,0 +1,3 @@
+# thanksgiving wishes, one per line. {name} = the person's name.
+Happy Thanksgiving, {name}! I'm grateful for you today and every day.
+Wishing you a table full of food and a heart full of thanks, {name}. Happy Thanksgiving!

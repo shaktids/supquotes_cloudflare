@@ -1,0 +1,2 @@
+# navratri wishes, one per line. {name} = the person's name.
+Happy Navratri, {name}! May the nine nights bring you strength and joy.

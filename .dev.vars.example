@@ -1,6 +1,0 @@
-# Local secrets for `astro dev` / `wrangler dev`. Copy to .dev.vars
-TURSO_DATABASE_URL=http://127.0.0.1:8787
-TURSO_AUTH_TOKEN=
-ADMIN_TOKEN=change-me
-# Folder with index.txt, quotes/, wishes/ (docs/content-format.md). Local test: python -m http.server 8090 -d content-example
-CONTENT_BASE_URL=

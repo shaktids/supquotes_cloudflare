@@ -1,0 +1,3 @@
+# independence-day wishes, one per line. {name} = the person's name.
+Happy Independence Day, {name}! Proud of our nation, its people and its spirit. Jai Hind!
+Wishing you a proud and joyful Independence Day, {name}!

@@ -1,0 +1,3 @@
+# doctors-day wishes, one per line. {name} = the person's name.
+Happy Doctors' Day, {name}! Thank you for healing with skill and kindness.
+To a doctor who truly cares, {name}: thank you. Happy Doctors' Day!

@@ -1,0 +1,4 @@
+# mothers-day wishes, one per line. {name} = the person's name.
+Happy Mother's Day, {name}! Thank you for your endless love and care.
+To the best mom in the world, {name}: you make everything better. Happy Mother's Day!
+Happy Mother's Day, {name}. Everything good in me started with you.

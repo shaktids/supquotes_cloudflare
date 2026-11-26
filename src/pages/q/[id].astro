@@ -1,12 +1,12 @@
 ---
 import Base from "../../layouts/Base.astro";
 import Generator from "../../components/Generator.astro";
-import { getQuote, templates, topics, occasions } from "../../lib/db";
+import { getQuote, templates, topics, occasions } from "../../lib/content";
 
-const id = Number(Astro.params.id);
-const quote = Number.isInteger(id) ? await getQuote(id) : null;
+const id = String(Astro.params.id ?? "");
+const quote = getQuote(id);
 if (!quote) return Astro.rewrite("/404");
-const t = Number(Astro.url.searchParams.get("t")) || null;
+const t = Astro.url.searchParams.get("t")?.slice(0, 60) || null;
 const [tpls, tops, occs] = await Promise.all([templates(), topics(), occasions()]);
 const short = quote.text.length > 70 ? `${quote.text.slice(0, 70)}…` : quote.text;
 const title = quote.author ? `“${short}” — ${quote.author}` : short;

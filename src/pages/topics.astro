@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import { topics, occasions } from "../lib/db";
+import { topics, occasions } from "../lib/content";
 const [tops, occs] = await Promise.all([topics(), occasions()]);
 Astro.response.headers.set("Cache-Control", "public, max-age=300, s-maxage=3600");
 ---

@@ -1,0 +1,2 @@
+# chocolate-day wishes, one per line. {name} = the person's name.
+Happy World Chocolate Day, {name}! Life is sweeter with you (and chocolate).

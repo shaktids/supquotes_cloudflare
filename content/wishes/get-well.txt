@@ -1,0 +1,2 @@
+# get-well wishes, one per line. {name} = the person's name.
+Get well soon, {name}. Sending you strength, rest and warm wishes.

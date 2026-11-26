@@ -1,0 +1,3 @@
+# friendship-day wishes, one per line. {name} = the person's name.
+Happy Friendship Day, {name}! Thanks for being the friend everyone wishes they had.
+Life is better with a friend like you, {name}. Happy Friendship Day!

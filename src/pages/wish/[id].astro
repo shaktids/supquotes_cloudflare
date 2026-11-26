@@ -1,14 +1,14 @@
 ---
 import Base from "../../layouts/Base.astro";
 import Generator from "../../components/Generator.astro";
-import { getWish, templates, topics, occasions, occasionLabel } from "../../lib/db";
+import { getWish, templates, topics, occasions, occasionLabel } from "../../lib/content";
 import { fillName } from "../../../shared/layout";
 
-const id = Number(Astro.params.id);
-const wish = Number.isInteger(id) ? await getWish(id) : null;
+const id = String(Astro.params.id ?? "");
+const wish = getWish(id);
 if (!wish) return Astro.rewrite("/404");
 const name = (Astro.url.searchParams.get("name") ?? "").slice(0, 40);
-const t = Number(Astro.url.searchParams.get("t")) || null;
+const t = Astro.url.searchParams.get("t")?.slice(0, 60) || null;
 const [tpls, tops, occs] = await Promise.all([templates(), topics(), occasions()]);
 const og = new URLSearchParams();
 if (name) og.set("name", name);

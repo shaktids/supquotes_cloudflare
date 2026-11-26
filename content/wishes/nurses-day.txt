@@ -1,0 +1,3 @@
+# nurses-day wishes, one per line. {name} = the person's name.
+Happy Nurses Day, {name}! Thank you for your care, patience and courage.
+To the nurse who makes hard days easier, {name}: thank you. Happy International Nurses Day!

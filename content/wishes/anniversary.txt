@@ -1,0 +1,3 @@
+# anniversary wishes, one per line. {name} = the person's name.
+Happy Anniversary, {name}! Here's to the love you share and many more beautiful years together.
+Cheers to another year of love and teamwork, {name}. Happy Anniversary!

@@ -1,0 +1,3 @@
+# fathers-day wishes, one per line. {name} = the person's name.
+Happy Father's Day, {name}! Thank you for being my hero and my biggest supporter.
+To the world's best dad, {name}: thanks for everything. Happy Father's Day!

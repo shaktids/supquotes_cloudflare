@@ -1,4 +1,0 @@
-# One wish per line. Write {name} where the person's name goes.
-Happy Birthday, {name}! Wishing you a year full of laughter and good surprises.
-Have the best birthday ever, {name}. You deserve it!
-Cheers to you, {name}! May all your birthday wishes come true.

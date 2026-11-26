@@ -1,0 +1,3 @@
+# good-night wishes, one per line. {name} = the person's name.
+Good night, {name}. Let today go and rest well. Tomorrow is a new page.
+Sweet dreams, {name}. Sleep peacefully and wake up refreshed.

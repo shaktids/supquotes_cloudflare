@@ -1,0 +1,2 @@
+# janmashtami wishes, one per line. {name} = the person's name.
+Happy Janmashtami, {name}! May Lord Krishna fill your life with love and joy.

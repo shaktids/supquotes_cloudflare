@@ -1,0 +1,2 @@
+# dance-day wishes, one per line. {name} = the person's name.
+Happy International Dance Day, {name}! Dance like nobody's watching.

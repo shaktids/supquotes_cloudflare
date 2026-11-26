@@ -1,0 +1,2 @@
+# health-day wishes, one per line. {name} = the person's name.
+On World Health Day, I'm wishing you strength, energy and good health, {name}.

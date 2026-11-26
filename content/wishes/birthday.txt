@@ -1,0 +1,4 @@
+# birthday wishes, one per line. {name} = the person's name.
+Happy Birthday, {name}! May this year bring you more laughter, more adventures and everything your heart is quietly hoping for.
+Wishing you the happiest of birthdays, {name}. Keep shining the way you always do!
+Another year older, {name}, and somehow even more awesome. Have a wonderful birthday!

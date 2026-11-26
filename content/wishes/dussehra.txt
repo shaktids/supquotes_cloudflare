@@ -1,0 +1,2 @@
+# dussehra wishes, one per line. {name} = the person's name.
+Happy Dussehra, {name}! May good always win in your life.

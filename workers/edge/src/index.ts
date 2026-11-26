@@ -1,41 +1,34 @@
-// supquotes-edge: draws link-preview (OG) images and runs the daily cron.
+// supquotes-edge: draws link-preview (OG) images. No database: content is bundled from
+// generated/content.json (built from content/ by scripts/build-content.mjs).
 //   GET /default.png
 //   GET /q/:id.png[?t=templateId]
 //   GET /w/:id.png[?name=Priya&t=templateId]
-//   cron "35 18 * * *" → sync content files, then set today's daily_picks row (festival switch included)
-//   cron "0 */6 * * *" → sync content files only
 import { ImageResponse, loadGoogleFont } from "workers-og";
-import { createClient, type Client } from "@libsql/client/web";
+import raw from "../../../generated/content.json";
 import { parseLayout, cssBackground, fillName, type Layout } from "../../../shared/layout";
-import { dayInTz, setDailyPick } from "../../../shared/daily";
-import { syncContent } from "../../../shared/content-sync";
+import type { Content, Template } from "../../../shared/content";
 
 export interface Env {
-  TURSO_DATABASE_URL: string;
-  TURSO_AUTH_TOKEN?: string;
   MEDIA_BASE_URL: string;
-  SITE_TZ?: string;
-  CONTENT_BASE_URL?: string; // folder holding index.txt, quotes/, wishes/ (docs/content-format.md)
-  CONTENT_TOKEN?: string; // optional Bearer token for that storage
 }
 
-const DAILY_CRON = "35 18 * * *";
+const C = raw as unknown as Content;
+const quoteById = new Map(C.quotes.map((q) => [q.id, q]));
+const wishById = new Map(C.wishes.map((w) => [w.id, w]));
+const tplById = new Map(C.templates.map((t) => [t.id, t]));
 
 const W = 1200, H = 630;
-const db = (env: Env): Client => createClient({ url: env.TURSO_DATABASE_URL, authToken: env.TURSO_AUTH_TOKEN || undefined });
 
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 
-async function template(d: Client, id: number | null, kind: "quote" | "wish", occasion: string | null) {
-  const r = id
-    ? await d.execute({ sql: "SELECT layout_json, bg_key FROM templates WHERE id = ? AND is_active = 1", args: [id] })
-    : await d.execute({
-        sql: `SELECT layout_json, bg_key FROM templates WHERE is_active = 1 AND kind IN (?, 'any')
-              AND (occasion IS NULL OR occasion = ?) ORDER BY (occasion = ?) DESC, sort, id LIMIT 1`,
-        args: [kind, occasion, occasion],
-      });
-  const row = r.rows[0];
-  return { layout: parseLayout(row?.layout_json as string | undefined), bgKey: (row?.bg_key as string | null) ?? null };
+/** The requested template, or the best default for this kind/occasion. */
+function template(id: string | null, kind: "quote" | "wish", occasion: string | null) {
+  let t: Template | undefined = id ? tplById.get(id) : undefined;
+  if (!t) {
+    const ok = C.templates.filter((x) => (x.kind === "any" || x.kind === kind) && (x.occasion == null || x.occasion === occasion));
+    t = ok.find((x) => x.occasion === occasion) ?? ok[0];
+  }
+  return { layout: parseLayout(t ? JSON.stringify(t.layout) : null), bgKey: t?.bg ?? null };
 }
 
 async function bgDataUri(env: Env, key: string | null): Promise<string | null> {
@@ -103,32 +96,27 @@ async function card(env: Env, layout: Layout, bgKey: string | null, text: string
   });
 }
 
+
 async function handle(req: Request, env: Env): Promise<Response> {
   const url = new URL(req.url);
-  const d = db(env);
-  const t = Number(url.searchParams.get("t")) || null;
+  const t = url.searchParams.get("t");
   let m: RegExpMatchArray | null;
 
   if (url.pathname === "/" || url.pathname === "/default.png") {
-    const { layout } = await template(d, null, "quote", null);
+    const { layout } = template(null, "quote", null);
     return card(env, layout, null, "Make a quote or wish card in seconds. Share it to your status.", "SupQuotes", true);
   }
-  if ((m = url.pathname.match(/^\/q\/(\d+)\.png$/))) {
-    const r = await d.execute({
-      sql: "SELECT q.text, a.name AS author FROM quotes q LEFT JOIN authors a ON a.id = q.author_id WHERE q.id = ? AND q.is_active = 1",
-      args: [Number(m[1])],
-    });
-    const q = r.rows[0];
+  if ((m = url.pathname.match(/^\/q\/([a-z0-9]+)\.png$/))) {
+    const q = quoteById.get(m[1]);
     if (!q) return new Response("not found", { status: 404 });
-    const { layout, bgKey } = await template(d, t, "quote", null);
-    return card(env, layout, bgKey, String(q.text), (q.author as string | null) ?? null, true);
+    const { layout, bgKey } = template(t, "quote", null);
+    return card(env, layout, bgKey, q.text, q.author, true);
   }
-  if ((m = url.pathname.match(/^\/w\/(\d+)\.png$/))) {
-    const r = await d.execute({ sql: "SELECT text, occasion FROM wishes WHERE id = ? AND is_active = 1", args: [Number(m[1])] });
-    const w = r.rows[0];
+  if ((m = url.pathname.match(/^\/w\/([a-z0-9]+)\.png$/))) {
+    const w = wishById.get(m[1]);
     if (!w) return new Response("not found", { status: 404 });
-    const { layout, bgKey } = await template(d, t, "wish", String(w.occasion));
-    return card(env, layout, bgKey, fillName(String(w.text), url.searchParams.get("name")), null, false);
+    const { layout, bgKey } = template(t, "wish", w.occasion);
+    return card(env, layout, bgKey, fillName(w.text, url.searchParams.get("name")), null, false);
   }
   return new Response("not found", { status: 404 });
 }
@@ -139,7 +127,7 @@ export default {
     // Normalise the cache key to only the params we use.
     const url = new URL(req.url);
     const key = new URL(url.origin + url.pathname);
-    for (const p of ["t", "name"]) if (url.searchParams.get(p)) key.searchParams.set(p, url.searchParams.get(p)!.slice(0, 40));
+    for (const p of ["t", "name"]) if (url.searchParams.get(p)) key.searchParams.set(p, url.searchParams.get(p)!.slice(0, 60));
     const cacheKey = new Request(key.toString());
     const cache = caches.default;
     const hit = await cache.match(cacheKey);
@@ -152,25 +140,5 @@ export default {
       console.error("og error", err);
       return new Response("render failed", { status: 500 });
     }
-  },
-
-  async scheduled(ev: ScheduledController, env: Env, ctx: ExecutionContext) {
-    const d = db(env);
-    const run = async () => {
-      if (env.CONTENT_BASE_URL) {
-        try {
-          const r = await syncContent(d, env.CONTENT_BASE_URL, { token: env.CONTENT_TOKEN });
-          console.log("content sync", JSON.stringify(r));
-        } catch (e) {
-          console.error("content sync failed", (e as Error).message);
-        }
-      }
-      if (ev.cron === DAILY_CRON) {
-        // Keep a pick set by hand in the admin page ahead of time.
-        const p = await setDailyPick(d, dayInTz(env.SITE_TZ || "Asia/Kolkata"), false);
-        console.log("daily pick", JSON.stringify(p));
-      }
-    };
-    ctx.waitUntil(run());
   },
 };

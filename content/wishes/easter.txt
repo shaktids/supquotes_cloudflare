@@ -1,0 +1,3 @@
+# easter wishes, one per line. {name} = the person's name.
+Happy Easter, {name}! May this season fill your heart with hope and new beginnings.
+Wishing you a joyful Easter, {name}, full of sunshine and sweet surprises.

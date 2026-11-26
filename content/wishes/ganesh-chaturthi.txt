@@ -1,0 +1,3 @@
+# ganesh-chaturthi wishes, one per line. {name} = the person's name.
+Happy Ganesh Chaturthi, {name}! May Bappa remove every obstacle from your path.
+Ganpati Bappa Morya! Wishing you wisdom and prosperity, {name}.

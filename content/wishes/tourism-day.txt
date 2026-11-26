@@ -1,0 +1,2 @@
+# tourism-day wishes, one per line. {name} = the person's name.
+Happy World Tourism Day, {name}! Here's to your next adventure.

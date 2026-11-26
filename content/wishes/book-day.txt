@@ -1,0 +1,2 @@
+# book-day wishes, one per line. {name} = the person's name.
+Happy World Book Day, {name}! May your next book be your new favourite.

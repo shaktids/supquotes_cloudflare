@@ -1,0 +1,2 @@
+# parents-day wishes, one per line. {name} = the person's name.
+Happy Parents Day, {name}! Thank you for every sacrifice and every hug.

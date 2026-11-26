@@ -1,0 +1,4 @@
+# sankranti wishes, one per line. {name} = the person's name.
+Happy Makar Sankranti, {name}! May your kites fly high and your days be sweet.
+Happy Makar Sankranti, {name}! May your kites fly high and your days be sweet as til-gud.
+Happy Pongal, {name}! Wishing you a harvest of happiness and good health.

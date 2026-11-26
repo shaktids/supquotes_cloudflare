@@ -1,0 +1,3 @@
+# christmas wishes, one per line. {name} = the person's name.
+Merry Christmas, {name}! May your home be filled with warmth, light and joy.
+Wishing you a peaceful and joyful Christmas, {name}, with the people you love most.

@@ -1,7 +1,7 @@
 # Media gateway: Internxt → rclone → Cloudflare Tunnel → CDN
 
-Internxt holds only **reusable art**: template backgrounds (`templates.bg_key`) and festival hero art
-(`festivals.art_key`). Visitor cards are drawn in the browser and are never stored anywhere.
+Internxt holds only **reusable art**: template backgrounds (`bg:` in `content/templates.yaml`) and festival banner art
+(`art:` in `content/festivals.yaml`). It's optional: without it, cards use gradient styles. Visitor cards are drawn in the browser and are never stored anywhere.
 
 ```
 Internxt Drive
@@ -85,8 +85,9 @@ message when that happens.
 ## 5. Using art
 
 1. Upload e.g. `backgrounds/roses.jpg` into the Internxt `supquotes` folder. Keep it 1080–1600px wide, JPG/WebP, under 400 KB.
-2. In `/admin` → Templates, set `bg_key` = `backgrounds/roses.jpg`. Set `overlay` in `layout_json` (e.g. `"rgba(0,0,0,0.35)"`) so the text stays readable.
-3. Festival hero: `/admin` → Festivals → `art_key` = `festivals/diwali-2027.jpg`.
+2. In `content/templates.yaml`, set `bg: backgrounds/roses.jpg` on a template. Add `"overlay": "rgba(0,0,0,0.35)"` to its `layout` so the text stays readable.
+3. Festival banner: in `content/festivals.yaml`, set `art: festivals/diwali-2027.jpg` on that festival.
+4. Commit, push and deploy.
 
 Changing a file under the same key won't show up until the CDN cache expires. Upload changed art under a
 **new key** (e.g. `roses-v2.jpg`), or purge that URL in the Cloudflare dashboard.

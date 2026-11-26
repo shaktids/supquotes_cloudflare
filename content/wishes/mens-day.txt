@@ -1,0 +1,2 @@
+# mens-day wishes, one per line. {name} = the person's name.
+Happy International Men's Day, {name}! Thank you for your strength, care and support.

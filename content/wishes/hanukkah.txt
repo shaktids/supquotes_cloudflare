@@ -1,0 +1,3 @@
+# hanukkah wishes, one per line. {name} = the person's name.
+Happy Hanukkah, {name}! May each candle bring you light, warmth and joy.
+Eight nights of light and love to you, {name}. Happy Hanukkah!

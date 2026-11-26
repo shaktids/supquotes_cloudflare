@@ -1,0 +1,4 @@
+# good-morning wishes, one per line. {name} = the person's name.
+Good morning, {name}! A fresh day, a fresh start. Make it count.
+Rise and shine, {name}. Wishing you a calm mind and a bright day ahead.
+Good morning, {name}! May your coffee be strong and your day be kind.

@@ -1,0 +1,2 @@
+# environment-day wishes, one per line. {name} = the person's name.
+Happy World Environment Day, {name}! Plant a tree, save a drop, make a difference.

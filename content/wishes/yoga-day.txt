@@ -1,0 +1,2 @@
+# yoga-day wishes, one per line. {name} = the person's name.
+Happy Yoga Day, {name}! Breathe in calm, breathe out stress.

@@ -1,0 +1,2 @@
+# fourth-of-july wishes, one per line. {name} = the person's name.
+Happy Fourth of July, {name}! Wishing you fireworks, freedom and fun.

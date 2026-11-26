@@ -1,0 +1,2 @@
+# youth-day wishes, one per line. {name} = the person's name.
+Happy International Youth Day, {name}! Dream big, the future is yours.

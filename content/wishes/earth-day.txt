@@ -1,0 +1,2 @@
+# earth-day wishes, one per line. {name} = the person's name.
+Happy Earth Day, {name}! Let's take good care of the only home we have.

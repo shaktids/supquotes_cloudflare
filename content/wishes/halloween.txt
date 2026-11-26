@@ -1,0 +1,2 @@
+# halloween wishes, one per line. {name} = the person's name.
+Happy Halloween, {name}! Wishing you more treats than tricks.

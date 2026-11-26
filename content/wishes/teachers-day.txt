@@ -1,0 +1,3 @@
+# teachers-day wishes, one per line. {name} = the person's name.
+Happy Teachers' Day, {name}! Thank you for teaching me so much more than lessons.
+To the teacher who made a difference, {name}: thank you. Happy Teachers' Day!

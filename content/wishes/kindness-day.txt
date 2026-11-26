@@ -1,0 +1,2 @@
+# kindness-day wishes, one per line. {name} = the person's name.
+Happy World Kindness Day, {name}! Thank you for being so kind, always.

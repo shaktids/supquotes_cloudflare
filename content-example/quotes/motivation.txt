@@ -1,6 +1,0 @@
-# One quote per line:  quote text — Author   (author optional; " - " or " | " also work)
-# Lines starting with # are ignored. Topic = file name → "motivation".
-The secret of getting ahead is getting started. — Mark Twain
-Well done is better than well said. — Benjamin Franklin
-Small steps every day add up to big results.
-Start where you are. Use what you have. Do what you can.

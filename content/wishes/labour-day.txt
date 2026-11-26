@@ -1,0 +1,2 @@
+# labour-day wishes, one per line. {name} = the person's name.
+Happy Labour Day, {name}! Your hard work deserves to be celebrated.
