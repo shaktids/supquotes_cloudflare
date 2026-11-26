@@ -1,0 +1,58 @@
+---
+import Base from "../layouts/Base.astro";
+Astro.response.headers.set("Cache-Control", "public, max-age=3600, s-maxage=86400");
+const updated = "26 November 2026";
+---
+<Base title="Privacy policy" description="How SupQuotes handles your data, cookies and ads.">
+  <article class="prose">
+    <h1>Privacy policy</h1>
+    <p class="lede">Last updated {updated}</p>
+
+    <h2>The short version</h2>
+    <ul>
+      <li>You don't need an account, and we don't ask for your name, email or phone number.</li>
+      <li>Cards are made <strong>in your browser</strong>. The text you type (including names in wishes) and the images you create are not uploaded to or stored on our servers.</li>
+      <li>We show ads from <strong>Google AdSense</strong>, which uses cookies. More on that below.</li>
+    </ul>
+
+    <h2>What we don't collect</h2>
+    <p>
+      SupQuotes has no sign-up, no database of users and no contact forms. When you type a name into a wish, it stays on
+      your device unless you choose to share the card or a link yourself. A shared link like
+      <code>/wish/…?name=Priya</code> contains that name in the address, so only share links with people you're happy to show it to.
+    </p>
+
+    <h2>Advertising (Google AdSense)</h2>
+    <p>
+      We use Google AdSense to show ads. Google and its partners use cookies to show ads based on your visits to this
+      and other websites. Google's use of advertising cookies lets it and its partners serve ads based on your visits to
+      SupQuotes and/or other sites on the Internet.
+    </p>
+    <ul>
+      <li>You can turn off personalised ads in <a href="https://adssettings.google.com" rel="noopener">Google Ads Settings</a>.</li>
+      <li>You can opt out of some third-party vendors' use of cookies for personalised ads at <a href="https://www.aboutads.info/choices/" rel="noopener">aboutads.info</a>.</li>
+      <li>How Google uses data from sites that use its services: <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">policies.google.com/technologies/partner-sites</a>.</li>
+    </ul>
+    <p>Visitors in the EEA, the UK and Switzerland are asked for consent before personalised ads are shown.</p>
+
+    <h2>Other services</h2>
+    <ul>
+      <li><strong>Cloudflare</strong> hosts the site and may log basic request data (such as IP address and browser type) for security and performance.</li>
+      <li><strong>Google Fonts</strong> serves the fonts used on the site and on cards.</li>
+    </ul>
+
+    <h2>Children</h2>
+    <p>SupQuotes is a general-audience site and does not knowingly collect personal information from children.</p>
+
+    <h2>Changes</h2>
+    <p>If this policy changes, we'll update the date at the top of this page.</p>
+  </article>
+</Base>
+
+<style>
+  .prose { max-width: 720px; }
+  .prose h2 { margin-top: 28px; font-size: 20px; }
+  .prose p, .prose li { color: var(--text); }
+  .prose a { color: var(--brand); }
+  .prose code { font-size: 13px; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+</style>

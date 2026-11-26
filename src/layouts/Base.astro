@@ -12,6 +12,8 @@ const { title, description = "Free quote and wish card maker. Pick a quote or wr
 const og = `${ogBase()}${ogPath}`;
 const canonical = new URL(Astro.url.pathname + Astro.url.search, Astro.site ?? Astro.url).toString();
 const fullTitle = title.includes("SupQuotes") ? title : `${title} · SupQuotes`;
+// Google AdSense publisher id (must match public/ads.txt). Auto ads choose placements.
+const ADSENSE_CLIENT = "ca-pub-7856118129660697";
 ---
 <!doctype html>
 <html lang="en">
@@ -40,6 +42,15 @@ const fullTitle = title.includes("SupQuotes") ? title : `${title} · SupQuotes`;
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@500;600;700&family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600;700&display=swap"
     />
+    <meta name="google-adsense-account" content={ADSENSE_CLIENT} />
+    {!noindex && (
+      <script
+        is:inline
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+        crossorigin="anonymous"
+      ></script>
+    )}
   </head>
   <body>
     <header class="site-head">
@@ -64,6 +75,7 @@ const fullTitle = title.includes("SupQuotes") ? title : `${title} · SupQuotes`;
         <a href="/topics">All topics</a>
         <a href="/wishes/birthday">Birthday wishes</a>
         <a href="/wishes/good-morning">Good morning wishes</a>
+        <a href="/privacy">Privacy</a>
         <span>Cards are made in your browser. Nothing is uploaded.</span>
       </div>
     </footer>
