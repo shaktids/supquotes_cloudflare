@@ -1,0 +1,8 @@
+# Append to your rclone.conf (see `rclone config file`).
+# Points at the Internxt CLI's local WebDAV server (`internxt webdav status` shows the URL).
+[internxt]
+type = webdav
+url = https://127.0.0.1:3005
+vendor = other
+# The Internxt CLI WebDAV server does not require credentials on localhost by default.
+# If yours does, add:  user = ...  and  pass = (output of `rclone obscure <password>`)

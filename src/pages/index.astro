@@ -1,0 +1,42 @@
+---
+import Base from "../layouts/Base.astro";
+import Generator from "../components/Generator.astro";
+import { today, templates, topics, occasions, randomWish } from "../lib/db";
+
+const t = await today();
+const [tpls, tops, occs] = await Promise.all([templates(), topics(), occasions()]);
+const festival = t.festival;
+const requested = Astro.url.searchParams.get("mode");
+// Festival days open on the Wish tab with that festival's wishes. Awareness days (no wishes,
+// e.g. World Cancer Day) open on the Quote tab with that day's quotes.
+const festivalHasWishes = !!festival && occs.some((o) => o.key === festival.occasion);
+const mode = requested === "quote" || requested === "wish" ? requested : festivalHasWishes ? "wish" : "quote";
+const wish = festivalHasWishes ? t.wish ?? (await randomWish(festival!.occasion)) : t.wish;
+Astro.response.headers.set("Cache-Control", "public, max-age=60, s-maxage=300");
+const heroStyle = `--accent:${festival?.accent ?? "#e2553f"};${festival?.art_url ? `background-image:url('${festival.art_url}')` : ""}`;
+---
+<Base title={festival ? `${festival.name} wishes & quotes · SupQuotes` : "SupQuotes · Quote & wish card maker"}>
+  {festival ? (
+    <a class="festival-hero" href={festivalHasWishes ? "/?mode=wish" : `/topic/${festival.occasion}`} style={heroStyle}>
+      <div>
+        <strong>{festival.headline ?? festival.name}</strong>
+        <span>{festivalHasWishes ? "Type a name, pick a style and share it to your status." : "Pick a quote, choose a style and share it."}</span>
+      </div>
+    </a>
+  ) : (
+    <Fragment>
+      <h1>Make a quote card in seconds</h1>
+      <p class="lede">Pick a quote or write a wish, choose a style, and share it to WhatsApp Status or Instagram.</p>
+    </Fragment>
+  )}
+  <Generator
+    mode={mode}
+    quote={t.quote}
+    wish={wish}
+    templates={tpls}
+    topics={tops}
+    occasions={occs}
+    templateId={t.templateId}
+    festivalOccasion={festival?.occasion ?? null}
+  />
+</Base>

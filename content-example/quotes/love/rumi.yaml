@@ -1,0 +1,9 @@
+# Folder name = topic → "love". Several files per topic are fine.
+name: Love          # optional: topic display name
+emoji: "❤️"          # optional: topic emoji
+author: Rumi        # optional: default author for every entry below
+quotes:
+  - What you seek is seeking you.
+  - text: Let yourself be silently drawn by the strange pull of what you really love. It will not lead you astray.
+  - text: Love is the bridge between two hearts.
+    author: ""      # empty = no author for this one

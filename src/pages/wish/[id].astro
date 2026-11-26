@@ -1,0 +1,26 @@
+---
+import Base from "../../layouts/Base.astro";
+import Generator from "../../components/Generator.astro";
+import { getWish, templates, topics, occasions, occasionLabel } from "../../lib/db";
+import { fillName } from "../../../shared/layout";
+
+const id = Number(Astro.params.id);
+const wish = Number.isInteger(id) ? await getWish(id) : null;
+if (!wish) return Astro.rewrite("/404");
+const name = (Astro.url.searchParams.get("name") ?? "").slice(0, 40);
+const t = Number(Astro.url.searchParams.get("t")) || null;
+const [tpls, tops, occs] = await Promise.all([templates(), topics(), occasions()]);
+const og = new URLSearchParams();
+if (name) og.set("name", name);
+if (t) og.set("t", String(t));
+const label = occasionLabel(wish.occasion);
+Astro.response.headers.set("Cache-Control", "public, max-age=300, s-maxage=86400");
+---
+<Base
+  title={name ? `A ${label} wish for ${name}` : `${label} wish`}
+  description={fillName(wish.text, name)}
+  ogPath={`/w/${wish.id}.png${og.size ? `?${og}` : ""}`}
+>
+  <Generator mode="wish" quote={null} wish={wish} name={name} templates={tpls} topics={tops} occasions={occs} templateId={t} />
+  <p class="lede" style="margin-top:20px"><a href={`/wishes/${wish.occasion}`}>More {label} wishes</a></p>
+</Base>

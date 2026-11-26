@@ -1,0 +1,15 @@
+---
+import Base from "../../layouts/Base.astro";
+import QuoteList from "../../components/QuoteList.astro";
+import { quotesBy, topics } from "../../lib/db";
+const slug = Astro.params.slug!;
+const topic = (await topics()).find((t) => t.slug === slug);
+if (!topic) return Astro.rewrite("/404");
+const quotes = await quotesBy("topic", slug);
+Astro.response.headers.set("Cache-Control", "public, max-age=300, s-maxage=3600");
+---
+<Base title={`${topic.name} quotes`} description={`The best ${topic.name.toLowerCase()} quotes. Turn any of them into a card for WhatsApp Status or Instagram.`}>
+  <h1>{topic.emoji} {topic.name} quotes</h1>
+  <p class="lede">Tap “Make card” on any quote to style and share it.</p>
+  <QuoteList quotes={quotes} />
+</Base>

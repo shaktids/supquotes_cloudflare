@@ -1,0 +1,11 @@
+# Save as ~/.cloudflared/config.yml (Windows: %USERPROFILE%\.cloudflared\config.yml)
+tunnel: <TUNNEL-UUID>                     # from `cloudflared tunnel create supquotes-media`
+credentials-file: C:\Users\<you>\.cloudflared\<TUNNEL-UUID>.json
+
+ingress:
+  - hostname: media.supquotes.com
+    service: http://127.0.0.1:8080          # rclone serve s3
+    originRequest:
+      connectTimeout: 10s
+      noHappyEyeballs: true
+  - service: http_status:404

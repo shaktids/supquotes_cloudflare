@@ -1,0 +1,71 @@
+---
+import "../styles/global.css";
+import { ogBase } from "../lib/db";
+
+interface Props {
+  title: string;
+  description?: string;
+  ogPath?: string; // path on the OG worker, e.g. /q/12.png
+  noindex?: boolean;
+}
+const { title, description = "Free quote and wish card maker. Pick a quote or write a wish, then share it to WhatsApp Status or Instagram.", ogPath = "/default.png", noindex = false } = Astro.props;
+const og = `${ogBase()}${ogPath}`;
+const canonical = new URL(Astro.url.pathname + Astro.url.search, Astro.site ?? Astro.url).toString();
+const fullTitle = title.includes("SupQuotes") ? title : `${title} · SupQuotes`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#e2553f" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SupQuotes" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={og} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={og} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@500;600;700&family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600;700&display=swap"
+    />
+  </head>
+  <body>
+    <header class="site-head">
+      <div class="wrap">
+        <a class="logo" href="/" aria-label="SupQuotes home">
+          <img src="/logo.svg" alt="" width="28" height="28" />
+          <span>Sup<b>Quotes</b></span>
+        </a>
+        <nav>
+          <a href="/?mode=quote">Quotes</a>
+          <a href="/?mode=wish">Wishes</a>
+          <a href="/topics">Topics</a>
+        </nav>
+      </div>
+    </header>
+    <main class="wrap">
+      <slot />
+    </main>
+    <footer class="site-foot">
+      <div class="wrap">
+        <span>© {new Date().getFullYear()} SupQuotes</span>
+        <a href="/topics">All topics</a>
+        <a href="/wishes/birthday">Birthday wishes</a>
+        <a href="/wishes/good-morning">Good morning wishes</a>
+        <span>Cards are made in your browser. Nothing is uploaded.</span>
+      </div>
+    </footer>
+  </body>
+</html>

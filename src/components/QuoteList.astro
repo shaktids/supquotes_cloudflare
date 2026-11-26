@@ -1,0 +1,16 @@
+---
+import type { Quote } from "../lib/db";
+interface Props { quotes: Quote[] }
+const { quotes } = Astro.props;
+---
+<div class="list">
+  {quotes.map((q) => (
+    <article class="card">
+      <blockquote>“{q.text}”</blockquote>
+      <div class="meta">
+        {q.author_slug ? <a href={`/author/${q.author_slug}`}>— {q.author}</a> : <span />}
+        <a class="btn" href={`/q/${q.id}`}>Make card</a>
+      </div>
+    </article>
+  ))}
+</div>

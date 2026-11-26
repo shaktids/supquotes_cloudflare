@@ -1,0 +1,26 @@
+{
+  "name": "supquotes",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "astro build && wrangler deploy",
+    "db:local": "node scripts/local-db-server.mjs",
+    "db:migrate": "node scripts/migrate.mjs",
+    "db:seed": "node scripts/migrate.mjs --seed",
+    "edge:dev": "wrangler dev -c workers/edge/wrangler.jsonc",
+    "edge:deploy": "wrangler deploy -c workers/edge/wrangler.jsonc"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^14.4.9",
+    "@libsql/client": "^0.18.0",
+    "astro": "^7.4.13",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "workers-og": "^0.0.27",
+    "wrangler": "^4.168.0"
+  }
+}

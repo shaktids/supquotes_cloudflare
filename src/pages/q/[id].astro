@@ -1,0 +1,25 @@
+---
+import Base from "../../layouts/Base.astro";
+import Generator from "../../components/Generator.astro";
+import { getQuote, templates, topics, occasions } from "../../lib/db";
+
+const id = Number(Astro.params.id);
+const quote = Number.isInteger(id) ? await getQuote(id) : null;
+if (!quote) return Astro.rewrite("/404");
+const t = Number(Astro.url.searchParams.get("t")) || null;
+const [tpls, tops, occs] = await Promise.all([templates(), topics(), occasions()]);
+const short = quote.text.length > 70 ? `${quote.text.slice(0, 70)}…` : quote.text;
+const title = quote.author ? `“${short}” — ${quote.author}` : short;
+Astro.response.headers.set("Cache-Control", "public, max-age=300, s-maxage=86400");
+---
+<Base
+  title={title}
+  description={`${quote.text}${quote.author ? ` — ${quote.author}` : ""}. Make it a card and share it.`}
+  ogPath={`/q/${quote.id}.png${t ? `?t=${t}` : ""}`}
+>
+  <Generator mode="quote" quote={quote} wish={null} templates={tpls} topics={tops} occasions={occs} templateId={t} />
+  <p class="lede" style="margin-top:20px">
+    {quote.topic_slug && <a href={`/topic/${quote.topic_slug}`}>More {quote.topic} quotes</a>}
+    {quote.author_slug && <Fragment> · <a href={`/author/${quote.author_slug}`}>More from {quote.author}</a></Fragment>}
+  </p>
+</Base>

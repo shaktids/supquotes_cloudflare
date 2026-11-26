@@ -1,0 +1,362 @@
+---
+import Base from "../layouts/Base.astro";
+import { ENTITIES } from "../lib/admin-schema";
+Astro.response.headers.set("Cache-Control", "no-store");
+Astro.response.headers.set("X-Robots-Tag", "noindex");
+---
+<Base title="Admin" noindex>
+  <div id="login" class="card login">
+    <h1>Admin</h1>
+    <form id="login-form">
+      <label for="tok">Admin token</label>
+      <input id="tok" type="password" autocomplete="current-password" required />
+      <button class="btn btn-primary" type="submit">Sign in</button>
+      <p class="err" id="login-err" role="alert"></p>
+    </form>
+  </div>
+
+  <div id="app" hidden>
+    <div class="bar">
+      <div class="chips" id="tabs" role="tablist">
+        {Object.entries(ENTITIES).map(([k, e]) => <button class="chip" type="button" data-entity={k}>{e.label}</button>)}
+      </div>
+      <div class="bar-right">
+        <button class="btn" type="button" id="import-toggle" aria-expanded="false" aria-controls="import-panel">Import files</button>
+        <button class="btn" type="button" id="sync" title="Import from CONTENT_BASE_URL (only if you host the folder online)">Sync from URL</button>
+        <button class="btn" type="button" id="reroll" title="Re-pick today's quote, wish, template and festival">Re-roll today</button>
+        <button class="btn" type="button" id="logout">Sign out</button>
+      </div>
+    </div>
+    <div class="bar">
+      <input type="text" id="q" placeholder="Search…" aria-label="Search" />
+      <button class="btn btn-primary" type="button" id="new">+ New</button>
+    </div>
+    <section id="import-panel" class="card import" hidden>
+      <h2>Import quotes &amp; wishes</h2>
+      <p class="muted">
+        Use the same layout as your folder: <code>quotes/&lt;topic&gt;.txt|csv|yaml</code> and
+        <code>wishes/&lt;occasion&gt;.txt|csv|yaml</code>. No index.txt needed. Format guide: docs/content-format.md.
+      </p>
+      <div class="import-grid">
+        <div>
+          <h3>Whole folder</h3>
+          <label for="imp-folder">Pick your SupQuotes folder (the one containing quotes/ and wishes/)</label>
+          <input id="imp-folder" type="file" webkitdirectory multiple />
+          <label class="check"><input type="checkbox" id="imp-full" checked /> This is my whole folder: hide quotes and wishes from files that aren't in it any more (including files you imported one by one)</label>
+        </div>
+        <div>
+          <h3>Single files</h3>
+          <label for="imp-files">Pick .txt / .csv / .yaml files</label>
+          <input id="imp-files" type="file" multiple accept=".txt,.csv,.yaml,.yml" />
+          <div class="row2">
+            <div>
+              <label for="imp-kind">They are</label>
+              <select id="imp-kind"><option value="quotes">Quotes</option><option value="wishes">Wishes</option></select>
+            </div>
+            <div>
+              <label for="imp-cat">Topic / occasion</label>
+              <input id="imp-cat" type="text" placeholder="e.g. motivation or birthday" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="muted" id="imp-summary"></p>
+      <div class="bar">
+        <button class="btn btn-primary" type="button" id="imp-go" disabled>Import</button>
+        <label class="check"><input type="checkbox" id="imp-force" /> Re-import files even if unchanged</label>
+      </div>
+    </section>
+    <p class="muted" id="status" role="status"></p>
+    <div id="sync-report" class="card sync-report" hidden></div>
+    <div class="table-wrap card"><table id="table"></table></div>
+    <div class="bar"><button class="btn" id="more" type="button" hidden>Load more</button></div>
+  </div>
+
+  <dialog id="dlg">
+    <form id="form" method="dialog">
+      <h2 id="dlg-title">Edit</h2>
+      <div id="fields"></div>
+      <p class="err" id="form-err" role="alert"></p>
+      <div class="bar">
+        <button class="btn btn-primary" type="submit" value="save">Save</button>
+        <button class="btn" type="button" id="cancel">Cancel</button>
+        <button class="btn danger" type="button" id="delete">Delete</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="application/json" id="schema" set:html={JSON.stringify(ENTITIES)}></script>
+  <script>
+    import type { Entity } from "../lib/admin-schema";
+    const ENT: Record<string, Entity> = JSON.parse(document.getElementById("schema")!.textContent!);
+    const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
+    const KEY = "sq_admin_token";
+    let token = "";
+    try { token = sessionStorage.getItem(KEY) ?? ""; } catch {}
+    let entity = "quotes";
+    let rows: Record<string, unknown>[] = [];
+    let total = 0;
+    let editing: Record<string, unknown> | null = null;
+
+    async function api(path: string, init: RequestInit = {}) {
+      const r = await fetch(`/api/admin/${path}`, {
+        ...init,
+        headers: { "content-type": "application/json", authorization: `Bearer ${token}`, ...(init.headers ?? {}) },
+      });
+      if (r.status === 401) { showLogin("Wrong or missing token."); throw new Error("unauthorized"); }
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(data.error ?? `HTTP ${r.status}`);
+      return data;
+    }
+
+    function showLogin(msg = "") {
+      $("login").hidden = false; $("app").hidden = true; $("login-err").textContent = msg;
+    }
+    async function showApp() {
+      $("login").hidden = true; $("app").hidden = false;
+      await load(entity);
+    }
+
+    const esc = (s: unknown) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
+
+    async function load(name: string, append = false) {
+      entity = name;
+      document.querySelectorAll<HTMLElement>("[data-entity]").forEach((b) => b.classList.toggle("active", b.dataset.entity === name));
+      const q = ($("q") as HTMLInputElement).value.trim();
+      const params = new URLSearchParams({ offset: String(append ? rows.length : 0) });
+      if (q) params.set("q", q);
+      $("status").textContent = "Loading…";
+      const data = await api(`${name}?${params}`);
+      rows = append ? rows.concat(data.rows) : data.rows;
+      total = data.total;
+      $("status").textContent = `${total} row${total === 1 ? "" : "s"}`;
+      $("more").hidden = rows.length >= total;
+      renderTable();
+    }
+
+    function renderTable() {
+      const e = ENT[entity];
+      const head = `<tr>${e.listCols.map((c) => `<th>${esc(c)}</th>`).join("")}<th></th></tr>`;
+      const body = rows.map((r, i) =>
+        `<tr>${e.listCols.map((c) => `<td>${esc(String(r[c] ?? "").slice(0, 120))}</td>`).join("")}<td><button class="btn sm" data-edit="${i}">Edit</button></td></tr>`,
+      ).join("");
+      $("table").innerHTML = `<thead>${head}</thead><tbody>${body}</tbody>`;
+    }
+
+    function openForm(row: Record<string, unknown> | null) {
+      const e = ENT[entity];
+      editing = row;
+      $("dlg-title").textContent = `${row ? "Edit" : "New"} ${e.label.replace(/s$/, "").toLowerCase()}`;
+      $("delete").hidden = !row;
+      $("form-err").textContent = "";
+      $("fields").innerHTML = e.fields.map((f) => {
+        const v = row?.[f.name] ?? (f.type === "bool" ? 1 : "");
+        const id = `f-${f.name}`;
+        const lbl = `<label for="${id}">${esc(f.name)}${f.required ? " *" : ""}${f.hint ? ` <span class="muted">· ${esc(f.hint)}</span>` : ""}</label>`;
+        const locked = row && !e.pkAuto && f.name === e.pk ? "readonly" : "";
+        if (f.type === "bool") return `<div class="f"><label><input type="checkbox" id="${id}" ${Number(v) ? "checked" : ""}/> ${esc(f.name)}</label></div>`;
+        if (f.type === "longtext") return `<div class="f">${lbl}<textarea id="${id}" rows="4">${esc(v)}</textarea></div>`;
+        if (f.type === "json") {
+          let pretty = String(v ?? "");
+          try { pretty = JSON.stringify(JSON.parse(pretty), null, 2); } catch {}
+          return `<div class="f">${lbl}<textarea id="${id}" rows="10" class="mono">${esc(pretty)}</textarea></div>`;
+        }
+        const type = f.type === "date" ? "date" : f.type === "int" || f.type === "ref" ? "number" : "text";
+        return `<div class="f">${lbl}<input id="${id}" type="${type}" value="${esc(v)}" ${locked}/></div>`;
+      }).join("");
+      ($("dlg") as HTMLDialogElement).showModal();
+    }
+
+    function formValues() {
+      const out: Record<string, unknown> = {};
+      for (const f of ENT[entity].fields) {
+        const el = document.getElementById(`f-${f.name}`) as HTMLInputElement;
+        out[f.name] = f.type === "bool" ? el.checked : el.value;
+      }
+      return out;
+    }
+
+    $("form").addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      const e = ENT[entity];
+      try {
+        if (editing) await api(`${entity}/${encodeURIComponent(String(editing[e.pk]))}`, { method: "PUT", body: JSON.stringify(formValues()) });
+        else await api(entity, { method: "POST", body: JSON.stringify(formValues()) });
+        ($("dlg") as HTMLDialogElement).close();
+        await load(entity);
+      } catch (err) {
+        $("form-err").textContent = (err as Error).message;
+      }
+    });
+    $("delete").onclick = async () => {
+      const e = ENT[entity];
+      if (!editing || !confirm("Delete this row permanently?")) return;
+      try {
+        await api(`${entity}/${encodeURIComponent(String(editing[e.pk]))}`, { method: "DELETE" });
+        ($("dlg") as HTMLDialogElement).close();
+        await load(entity);
+      } catch (err) { $("form-err").textContent = (err as Error).message; }
+    };
+    $("cancel").onclick = () => ($("dlg") as HTMLDialogElement).close();
+    $("table").addEventListener("click", (ev) => {
+      const b = (ev.target as HTMLElement).closest<HTMLElement>("[data-edit]");
+      if (b) openForm(rows[Number(b.dataset.edit)]);
+    });
+    $("new").onclick = () => openForm(null);
+    $("more").onclick = () => load(entity, true);
+    $("tabs").addEventListener("click", (ev) => {
+      const b = (ev.target as HTMLElement).closest<HTMLElement>("[data-entity]");
+      if (b) { ($("q") as HTMLInputElement).value = ""; load(b.dataset.entity!); }
+    });
+    let t: ReturnType<typeof setTimeout>;
+    $("q").addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => load(entity), 300); });
+    $("reroll").onclick = async () => {
+      if (!confirm("Pick a new quote, wish and template for today?")) return;
+      const d = await api("daily", { method: "POST", body: "{}" });
+      $("status").textContent = `Today's pick updated: quote ${d.pick.quote_id}, wish ${d.pick.wish_id}, template ${d.pick.template_id}${d.pick.festival_id ? `, festival ${d.pick.festival_id}` : ""}`;
+      if (entity === "daily_picks") load(entity);
+    };
+    type Report = { files: number; changed: number; unchanged: number; removed: number; quotes: number; wishes: number; errors: { path: string; error: string }[]; warnings: string[] };
+    function showReport(title: string, r: Report, extra = "") {
+      const box = $("sync-report");
+      const list = (t: string, items: string[]) => items.length ? `<p><b>${t}</b></p><ul>${items.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : "";
+      box.hidden = false;
+      box.innerHTML =
+        `<p><b>${esc(title)}</b> ${r.files} file(s) · ${r.changed} imported · ${r.unchanged} unchanged · ${r.removed} removed · ` +
+        `${r.quotes} quotes · ${r.wishes} wishes</p>` +
+        list("Errors", r.errors.map((e) => `${e.path}: ${e.error}`)) + list("Warnings", r.warnings) + extra;
+      if (entity === "quotes" || entity === "wishes") load(entity);
+    }
+
+    // ----- import from this computer -----
+    const OKEXT = /\.(txt|csv|ya?ml)$/i;
+    const folderEl = $<HTMLInputElement>("imp-folder");
+    const filesEl = $<HTMLInputElement>("imp-files");
+    const catEl = $<HTMLInputElement>("imp-cat");
+    const kindEl = $<HTMLSelectElement>("imp-kind");
+    let picked: { path: string; file: File }[] = [];
+    let pickedFrom: "folder" | "files" | null = null;
+
+    $("import-toggle").onclick = (ev) => {
+      const panel = $("import-panel");
+      panel.hidden = !panel.hidden;
+      (ev.currentTarget as HTMLElement).setAttribute("aria-expanded", String(!panel.hidden));
+    };
+    function refreshPicked() {
+      if (pickedFrom === "files") {
+        const cat = catEl.value.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+        picked = [...(filesEl.files ?? [])].filter((f) => OKEXT.test(f.name)).map((f) => ({ path: cat ? `${kindEl.value}/${cat}/${f.name}` : "", file: f }));
+      }
+      const ok = picked.filter((p) => p.path);
+      const q = ok.filter((p) => p.path.startsWith("quotes/")).length;
+      $("imp-summary").textContent = !pickedFrom
+        ? ""
+        : pickedFrom === "files" && !catEl.value.trim()
+          ? "Type the topic or occasion these files belong to."
+          : `${ok.length} file(s) ready: ${q} quote file(s), ${ok.length - q} wish file(s).` +
+            (pickedFrom === "folder" && picked.length !== ok.length ? ` ${picked.length - ok.length} file(s) outside quotes/ or wishes/ will be skipped.` : "");
+      ($("imp-go") as HTMLButtonElement).disabled = ok.length === 0;
+    }
+    folderEl.onchange = () => {
+      pickedFrom = "folder";
+      filesEl.value = "";
+      picked = [...(folderEl.files ?? [])]
+        .filter((f) => OKEXT.test(f.name))
+        .map((f) => {
+          const parts = (f.webkitRelativePath || f.name).split("/");
+          const i = parts.findIndex((p) => p === "quotes" || p === "wishes");
+          return { path: i >= 0 ? parts.slice(i).join("/") : "", file: f };
+        });
+      refreshPicked();
+    };
+    filesEl.onchange = () => { pickedFrom = "files"; folderEl.value = ""; refreshPicked(); };
+    catEl.oninput = refreshPicked;
+    kindEl.onchange = refreshPicked;
+
+    $("imp-go").onclick = async (ev) => {
+      const btn = ev.currentTarget as HTMLButtonElement;
+      const ok = picked.filter((p) => p.path);
+      const tooBig = ok.find((p) => p.file.size > 1_000_000);
+      if (tooBig) { $("imp-summary").textContent = `${tooBig.path} is over 1 MB. Split it into smaller files.`; return; }
+      btn.disabled = true;
+      $("imp-summary").textContent = "Importing…";
+      try {
+        const files = await Promise.all(ok.map(async (p) => ({ path: p.path, body: await p.file.text() })));
+        const { report } = await api("import", {
+          method: "POST",
+          body: JSON.stringify({
+            files,
+            fullSet: pickedFrom === "folder" && ($("imp-full") as HTMLInputElement).checked,
+            force: ($("imp-force") as HTMLInputElement).checked,
+          }),
+        });
+        showReport("Import done.", report);
+        $("imp-summary").textContent = "";
+      } catch (err) {
+        $("imp-summary").textContent = (err as Error).message;
+      } finally {
+        btn.disabled = false;
+      }
+    };
+
+    $("sync").onclick = async (ev) => {
+      const btn = ev.currentTarget as HTMLButtonElement;
+      const box = $("sync-report");
+      btn.disabled = true;
+      box.hidden = false;
+      box.innerHTML = "Syncing…";
+      try {
+        const { report } = await api("sync", { method: "POST", body: JSON.stringify({ force: ev.shiftKey }) });
+        showReport("Sync done.", report, `<p class="muted">Shift+click re-imports every file even if it hasn't changed.</p>`);
+      } catch (err) {
+        box.innerHTML = `<p class="err">${esc((err as Error).message)}</p>`;
+      } finally {
+        btn.disabled = false;
+      }
+    };
+    $("logout").onclick = () => { token = ""; try { sessionStorage.removeItem(KEY); } catch {} showLogin(); };
+    $("login-form").addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      token = ($("tok") as HTMLInputElement).value.trim();
+      try { sessionStorage.setItem(KEY, token); } catch {}
+      try { await showApp(); } catch {}
+    });
+
+    if (token) showApp().catch(() => {}); else showLogin();
+  </script>
+
+  <style>
+    .login { max-width: 380px; margin: 40px auto; padding: 24px; }
+    .login h1 { margin-top: 0; }
+    .login form { display: grid; gap: 10px; }
+    .import { padding: 16px 20px; margin: 12px 0; }
+    .import h2 { margin: 0 0 4px; font-size: 18px; }
+    .import h3 { margin: 12px 0 6px; font-size: 15px; }
+    .import code { font-size: 12px; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+    .import-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .import input[type=file] { display: block; margin: 4px 0 10px; max-width: 100%; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .check { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: var(--text); }
+    @media (max-width: 700px) { .import-grid, .row2 { grid-template-columns: 1fr; } }
+    .sync-report { padding: 12px 16px; margin-bottom: 12px; font-size: 14px; }
+    .sync-report p { margin: 4px 0; }
+    .sync-report ul { margin: 4px 0 8px; padding-left: 20px; }
+    .err { color: #d33; min-height: 1.2em; margin: 0; font-size: 14px; }
+    .muted { color: var(--muted); font-size: 13px; }
+    .bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 14px 0; }
+    .bar-right { margin-left: auto; display: flex; gap: 8px; }
+    #q { max-width: 360px; }
+    .table-wrap { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; font-size: 14px; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+    td:last-child { text-align: right; }
+    :global(.btn.sm) { height: 30px; padding: 0 12px; font-size: 13px; }
+    .danger { color: #d33; margin-left: auto; }
+    dialog { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--text); width: min(640px, calc(100vw - 32px)); padding: 20px; }
+    dialog::backdrop { background: rgba(0,0,0,.45); }
+    dialog h2 { margin-top: 0; }
+    :global(#fields .f) { margin-bottom: 12px; }
+    :global(#fields .mono) { font-family: ui-monospace, Consolas, monospace; font-size: 13px; }
+  </style>
+</Base>

@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "supquotes",
+  "main": "@astrojs/cloudflare/entrypoints/server",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  // The adapter writes dist/server/wrangler.json (assets → dist/client) and `wrangler deploy` uses it.
+  "assets": { "binding": "ASSETS" },
+  "observability": { "enabled": true },
+  "vars": {
+    // Public base URL of the Internxt media gateway (rclone serve s3 behind a Cloudflare Tunnel).
+    // Path-style S3: https://<host>/<bucket>
+    "MEDIA_BASE_URL": "https://media.supquotes.com/supquotes",
+    // The edge Worker that draws OG images.
+    "OG_BASE_URL": "https://og.supquotes.com",
+    "SITE_TZ": "Asia/Kolkata",
+    // Same value as in workers/edge/wrangler.jsonc; used by the admin "Sync now" button.
+    "CONTENT_BASE_URL": ""
+  }
+  // Secrets (wrangler secret put): TURSO_DATABASE_URL, TURSO_AUTH_TOKEN, ADMIN_TOKEN, optional CONTENT_TOKEN
+}

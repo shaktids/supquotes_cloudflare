@@ -1,0 +1,18 @@
+---
+import Base from "../layouts/Base.astro";
+import { topics, occasions } from "../lib/db";
+const [tops, occs] = await Promise.all([topics(), occasions()]);
+Astro.response.headers.set("Cache-Control", "public, max-age=300, s-maxage=3600");
+---
+<Base title="Quote topics, festivals and wish occasions" description="Browse quotes by topic and wishes for birthdays, festivals and special days around the world.">
+  <h1>Topics</h1>
+  <p class="lede">Browse quotes by topic, or wishes for everyday moments, festivals and special days.</p>
+  <h2>Quotes</h2>
+  <div class="chips">{tops.filter((t) => !t.is_occasion).map((t) => <a class="chip" href={`/topic/${t.slug}`}>{t.emoji} {t.name}</a>)}</div>
+  <h2>Festival & day quotes</h2>
+  <div class="chips">{tops.filter((t) => t.is_occasion).map((t) => <a class="chip" href={`/topic/${t.slug}`}>{t.emoji} {t.name}</a>)}</div>
+  <h2>Everyday wishes</h2>
+  <div class="chips">{occs.filter((o) => o.everyday).map((o) => <a class="chip" href={`/wishes/${o.key}`}>{o.label}</a>)}</div>
+  <h2>Festival & day wishes <span class="lede" style="font-size:14px">(next one first)</span></h2>
+  <div class="chips">{occs.filter((o) => !o.everyday).map((o) => <a class="chip" href={`/wishes/${o.key}`}>{o.label}</a>)}</div>
+</Base>

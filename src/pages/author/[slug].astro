@@ -1,0 +1,13 @@
+---
+import Base from "../../layouts/Base.astro";
+import QuoteList from "../../components/QuoteList.astro";
+import { quotesBy } from "../../lib/db";
+const quotes = await quotesBy("author", Astro.params.slug!);
+if (!quotes.length) return Astro.rewrite("/404");
+const name = quotes[0].author!;
+Astro.response.headers.set("Cache-Control", "public, max-age=300, s-maxage=3600");
+---
+<Base title={`${name} quotes`} description={`Quotes by ${name}. Turn any of them into a shareable card.`}>
+  <h1>Quotes by {name}</h1>
+  <QuoteList quotes={quotes} />
+</Base>

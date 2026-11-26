@@ -1,0 +1,5 @@
+# Folder name = occasion → "diwali". lang marks the language.
+lang: hi
+wishes:
+  - "{name}, आपको और आपके परिवार को दीपावली की हार्दिक शुभकामनाएं!"
+  - "दीपों का यह पर्व आपके जीवन में खुशियां लाए, {name}। शुभ दीपावली!"

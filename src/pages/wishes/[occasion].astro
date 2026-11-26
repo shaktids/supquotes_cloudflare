@@ -1,0 +1,37 @@
+---
+import Base from "../../layouts/Base.astro";
+import { wishesFor, occasionLabel } from "../../lib/db";
+const occasion = Astro.params.occasion!;
+const wishes = await wishesFor(occasion);
+if (!wishes.length) return Astro.rewrite("/404");
+const label = occasionLabel(occasion);
+Astro.response.headers.set("Cache-Control", "public, max-age=300, s-maxage=3600");
+---
+<Base title={`${label} wishes`} description={`${label} wishes you can personalise with a name and share as a card.`}>
+  <h1>{label} wishes</h1>
+  <p class="lede">Type a name once and every wish below uses it.</p>
+  <div style="max-width:320px">
+    <label for="wl-name">Their name</label>
+    <input id="wl-name" type="text" maxlength="40" placeholder="e.g. Priya" autocomplete="off" />
+  </div>
+  <div class="list">
+    {wishes.map((w) => (
+      <article class="card">
+        <blockquote data-tpl={w.text}>{w.text.replace(/\{name\}/g, "you")}</blockquote>
+        <div class="meta"><span></span><a class="btn" href={`/wish/${w.id}`} data-wish={w.id}>Make card</a></div>
+      </article>
+    ))}
+  </div>
+  <script>
+    const input = document.getElementById("wl-name") as HTMLInputElement;
+    input.addEventListener("input", () => {
+      const n = input.value.trim();
+      document.querySelectorAll<HTMLElement>("[data-tpl]").forEach((el) => {
+        el.textContent = el.dataset.tpl!.replace(/\{name\}/g, n || "you");
+      });
+      document.querySelectorAll<HTMLAnchorElement>("[data-wish]").forEach((a) => {
+        a.href = `/wish/${a.dataset.wish}${n ? `?name=${encodeURIComponent(n)}` : ""}`;
+      });
+    });
+  </script>
+</Base>
